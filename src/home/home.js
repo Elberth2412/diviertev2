@@ -1,19 +1,26 @@
-import Navbar from "../componentes/navBar";
 import CardInicio from "../componentes/card";
+import "../elementos/card.css"
 
-const Home = ({usuario}) => {
+const Home = () => {
     return (
-        <div>
-            <Navbar 
-                opcion1="INICIO"
-                opcion2="APRENDIZAJE DINAMICO"
-                opcion3="SIMULACION HISTORICA"
-                usuario = {usuario}
+        <div className="card-grid">
+            <CardInicio 
+                titulo = "HITOS"
+                texto = "Visualiza tu progreso a través de objetivos clave, organizados en etapas que facilitan tu aprendizaje y desarrollo."
+                imagen="ruta.png"
+                ruta = "/hitos"
             />
             <CardInicio 
-                titulo = "TIULO1"
-                imagen = "tirulo1"
-                texto = "titulo1"
+                titulo = "SIMULADOR"
+                texto = "Practica y experimenta en un entorno seguro que te permite aplicar lo aprendido de forma interactiva."
+                imagen= "virtual.png"
+                ruta = "/simulador"
+            />
+            <CardInicio 
+                titulo = "ESTADISTICAS"
+                texto = "Consulta tus métricas y resultados para analizar tu rendimiento y tomar mejores decisiones."
+                imagen = "estadistica.png"
+                ruta = "/estadisticas"
             />
         </div>
     );

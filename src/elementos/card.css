@@ -1,0 +1,15 @@
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+    justify-items: center;
+    align-items: stretch;
+    background-color: wheat;
+    margin: 1rem;
+    border-radius: 12px;
+}
+
+.card-grid div:hover {
+    transform: scale(1.01);
+    transition: 0.3s;
+}

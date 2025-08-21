@@ -1,23 +1,25 @@
-const CardInicio = ({titulo, imagen, texto}) => {
+import { Link } from "react-router-dom";
+
+const CardInicio = ({ titulo, texto, imagen, ruta }) => {
 
     return (
-        <div className="card-Base">
-            <header className="card-Header">
-                <div className="card-Titulo">
-                    {titulo}
-                </div>
-                <img
-                    className="card-imagen"
-                    alt={imagen}
-                    src={`imagenes/${imagen}`}
-                />
-            </header>
-            <aside>
-                <p className="card-P">
-                    <strong>{texto}</strong>
-                </p>
-            </aside>
+
+        <div className="max-w-sm bg-white border border-gray-700 rounded-xl m-4 shadow-sm dark:bg-gray-500">
+            <Link to={ruta}>
+                <img className="rounded-xl bg-white w-screen h-[310px] p-5" src={require(`../assets/${imagen}`)} alt={imagen} />
+            </Link>
+            <div className="p-5">
+                <Link to={ruta}>
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-[#FFFFFF]">{titulo}</h5>
+                </Link>
+                <p className="mb-3 font-normal text-justify text-[#FFFFFF]">{texto}</p>
+
+                <Link to={ruta}>
+                    <h5 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">VER MAS</h5>
+                </Link>
+            </div>
         </div>
+
     );
 }
 
