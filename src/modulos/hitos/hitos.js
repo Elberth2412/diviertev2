@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom";
 
 const Hitos = () => {
+    
     return (
-        <div className="grid grid-cols-4 grid-rows-5 h-screen bg-gray-500 mb-5 p-5 gap-10 m-4 rounded-xl">
+        <div className="grid grid-cols-4 grid-rows-5 h-screen bg-gray-500 mb-5 p-4 gap-10 m-4 rounded-xl text-black">
             <NavLink
                 to="/hitos/ConceptosBasicos"
                 className={({ isActive }) =>
                     `row-start-2 row-end-3 col-start-1 col-end-2 rounded-xl grid place-items-center hover:scale-105 duration-300 
-            ${isActive ? "bg-blue-500" : "bg-blue-300"}`
+            ${isActive ? "bg-black text-white" : "bg-white"}`
                 }
             >
                 Conceptos Básicos
@@ -17,7 +18,7 @@ const Hitos = () => {
                 to="/hitos/ValorRiesgo"
                 className={({ isActive }) =>
                     `row-start-4 row-end-5 col-start-1 col-end-2 rounded-xl grid place-items-center hover:scale-105 duration-300 
-            ${isActive ? "bg-red-500" : "bg-red-300"}`
+            ${isActive ? "bg-black text-white" : "bg-white"}`
                 }
             >
                 Valor en Riesgo (VaR)
@@ -82,8 +83,6 @@ const Hitos = () => {
             >
                 Interpretación VaR
             </NavLink>
-
-
         </div>
     );
 }

@@ -3,8 +3,8 @@ import "../elementos/card.css"
 
 const Home = () => {
     return (
-        <div className="card-grid">
-            <CardInicio 
+        <div className="grid grid-cols-3 gap-4 justify-items-center items-streech bg-gray-500 m-4 rounded-xl">
+            <CardInicio
                 titulo = "HITOS"
                 texto = "Visualiza tu progreso a través de objetivos clave, organizados en etapas que facilitan tu aprendizaje y desarrollo."
                 imagen="ruta.png"
