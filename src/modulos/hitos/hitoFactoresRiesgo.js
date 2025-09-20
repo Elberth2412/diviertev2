@@ -2,26 +2,26 @@ import Hitos from "./hitos";
 import Carrusel from "../../componentes/carrusel";
 
 //Imagenes del carrusel:
-import car1 from "../../assets/car-1.png";
-import car2 from "../../assets/car-2.png";
-import car3 from "../../assets/car-3.png";
-import car4 from "../../assets/car-4.png";
-import car5 from "../../assets/car-5.png";
+import car9 from "../../assets/car-9.jpg";
+import car10 from "../../assets/car-10.jpg";
+import car11 from "../../assets/car-11.jpg";
+import car12 from "../../assets/car-12.jpg";
+import car13 from "../../assets/car-13.jpg";
 
 const HitoFactoresRiesgo = () => {
 
     const slides = [
-        car1,
-        car2,
-        car3,
-        car4,
-        car5
+        car9,
+        car10,
+        car11,
+        car12,
+        car13
     ];
 
-    return ( 
+    return (
         <div>
             <Hitos />
-            <div className="h-screen bg-gray-500 h-auto p-4 gap-10 m-4 rounded-xl">
+            <div className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
 
                 <section className="bg-black rounded-xl">
                     <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
@@ -29,20 +29,16 @@ const HitoFactoresRiesgo = () => {
                         {/* Texto a la izquierda */}
                         <div className="mr-auto place-self-center lg:col-span-7">
                             <h1 className="max-w-2xl mb-4 text-4xl text-[#FFFFFF] font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
-                                Introducción breve
+                                Introducción
                             </h1>
                             <p className="max-w-2xl mb-6 font-light text-justify text-[#FFFFFF] lg:mb-8 md:text-lg lg:text-xl">
-                                Las <span className="font-semibold">finanzas personales</span> son el conjunto de decisiones que una persona toma sobre cómo administrar su dinero:
-                                ingresos, gastos, ahorro, inversión y manejo de deudas.
-                                <br /><br />
-                                La <span className="font-semibold">gestión de riesgos</span> es la práctica de identificar y prevenir posibles pérdidas financieras.
-                                Comprender estos conceptos básicos ayuda a tomar mejores decisiones y asegurar estabilidad económica.
+                                Toda inversión conlleva riesgos. Conocer los principales factores de riesgo ayuda a tomar decisiones más informadas y reducir la probabilidad de pérdidas significativas.
                             </p>
                         </div>
 
                         {/* Imagen a la derecha */}
                         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex bg-white rounded-xl">
-                            <img className="rounded-xl bg-white w-auto p-5" src={car1} alt="mockup" />
+                            <img className="rounded-xl bg-white w-auto p-5" src={car10} alt="mockup" />
                         </div>
 
                     </div>
@@ -57,25 +53,19 @@ const HitoFactoresRiesgo = () => {
                     </div>
 
                     {/* Caja verde abajo izquierda */}
-                    <div className="col-start-1 col-end-2 row-start-2 row-end-3 bg-[#FFFFFF] rounded-xl p-4 flex flex-col justify-center shadow-md">
-                        <h3 className="text-lg font-bold text-gray-800 mb-2">
-                            3. Ejemplo práctico simple
-                        </h3>
-                        <p className="text-gray-700 mb-2">
-                            Supongamos que una persona gana <span className="font-semibold">$1000</span> al mes.
-                        </p>
-                        <ul className="list-disc list-inside text-gray-700 space-y-1">
-                            <li>
-                                Si gasta <span className="font-semibold">$950</span> y ahorra <span className="font-semibold">$50</span>, tendrá un fondo pequeño para emergencias.
-                            </li>
-                            <li>
-                                Si invierte parte de ese ahorro, puede generar más ingresos, pero asume un <span className="text-red-600 font-medium">riesgo de pérdida</span>.
-                            </li>
-                        </ul>
-                        <p className="mt-3 text-gray-800 font-medium">
-                            🔑 Esto refuerza la conexión entre <span className="underline">presupuesto</span>, <span className="underline">ahorro</span>, <span className="underline">inversión</span> y <span className="underline">riesgo</span>.
-                        </p>
+                    <div className="col-start-1 col-end-2 row-start-2 row-end-3 bg-white rounded-xl p-4 flex flex-col justify-center shadow-md">
+                        <div className="bg-black rounded-xl p-4 flex flex-col items-start   ">
+                            <h1 className="text-3xl md:text-4xl xl:text-5xl font-extrabold text-white mb-4 leading-tight">
+                                Introducción
+                            </h1>
+                            <p className="text-base md:text-lg xl:text-xl font-light text-justify text-gray-200">
+                                Toda inversión conlleva riesgos. Conocer los principales factores de
+                                riesgo ayuda a tomar decisiones más informadas y reducir la probabilidad
+                                de pérdidas significativas.
+                            </p>
+                        </div>
                     </div>
+
 
 
                     {/* Preguntas ocupando toda la segunda columna */}
@@ -88,20 +78,20 @@ const HitoFactoresRiesgo = () => {
                             {/* Pregunta 1 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    1. ¿Qué significa “presupuesto”?
+                                    1. ¿Qué riesgo afecta a una inversión si los precios caen repentinamente en la bolsa?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un plan para administrar ingresos y gastos
+                                        Riesgo de mercado
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un ahorro fijo mensual
+                                        Riesgo de liquidez
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un préstamo bancario
+                                        Riesgo político
                                     </label>
                                 </div>
                             </div>
@@ -109,20 +99,20 @@ const HitoFactoresRiesgo = () => {
                             {/* Pregunta 2 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    2. ¿Cuál es la diferencia entre ahorro e inversión?
+                                    2. ¿Qué sucede si la inflación supera la rentabilidad de una inversión?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        El ahorro guarda dinero, la inversión lo hace crecer
+                                        El poder adquisitivo disminuye ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        No hay ninguna diferencia
+                                        La inversión se vuelve más líquida
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        El ahorro implica más riesgo que la inversión
+                                        El riesgo de mercado aumenta
                                     </label>
                                 </div>
                             </div>
@@ -130,20 +120,20 @@ const HitoFactoresRiesgo = () => {
                             {/* Pregunta 3 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    3. ¿Qué riesgos financieros pueden afectar a una persona?
+                                    3. ¿Qué tipo de riesgo se presenta si un activo no se puede vender fácilmente?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Pérdida de empleo
+                                        Riesgo de crédito
                                     </label>
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Endeudamiento excesivo
+                                        Riesgo de liquidez ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Inflación
+                                        Riesgo de inflación
                                     </label>
                                 </div>
                             </div>
@@ -151,25 +141,25 @@ const HitoFactoresRiesgo = () => {
                             {/* Pregunta 4 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    4. ¿Por qué es importante gestionar los riesgos en las finanzas personales?
+                                    4. ¿Qué riesgo afecta a los inversionistas cuando un gobierno cambia sus políticas económicas o regulatorias?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        Para evitar pérdidas económicas y proteger el futuro
+                                        Riesgo político/regulatorio ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        Para gastar sin preocupaciones
+                                        Riesgo de inflación
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        No es importante, los riesgos no afectan las finanzas
+                                        Riesgo de mercado
                                     </label>
                                 </div>
                             </div>
 
-                            <button className="w-full mt-4 bg-black hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg">
+                            <button className="w-full mt-4 bg-black hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg">
                                 Enviar respuestas
                             </button>
                         </div>
@@ -179,7 +169,7 @@ const HitoFactoresRiesgo = () => {
 
             </div>
         </div>
-     );
+    );
 }
- 
+
 export default HitoFactoresRiesgo;

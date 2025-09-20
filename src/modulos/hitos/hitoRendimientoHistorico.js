@@ -21,7 +21,7 @@ const HitoRendimientoHistorico = () => {
     return ( 
         <div>
             <Hitos />
-            <div className="h-screen bg-gray-500 h-auto p-4 gap-10 m-4 rounded-xl">
+            <div className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
 
                 <section className="bg-black rounded-xl">
                     <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
@@ -32,11 +32,14 @@ const HitoRendimientoHistorico = () => {
                                 Introducción breve
                             </h1>
                             <p className="max-w-2xl mb-6 font-light text-justify text-[#FFFFFF] lg:mb-8 md:text-lg lg:text-xl">
-                                Las <span className="font-semibold">finanzas personales</span> son el conjunto de decisiones que una persona toma sobre cómo administrar su dinero:
-                                ingresos, gastos, ahorro, inversión y manejo de deudas.
+                                El análisis del <span className="font-semibold">rendimiento histórico</span> permite comparar distintos activos financieros (acciones, bonos, divisas, criptomonedas, etc.) a lo largo del tiempo.
                                 <br /><br />
-                                La <span className="font-semibold">gestión de riesgos</span> es la práctica de identificar y prevenir posibles pérdidas financieras.
-                                Comprender estos conceptos básicos ayuda a tomar mejores decisiones y asegurar estabilidad económica.
+                                Esto ayuda a responder preguntas como:
+                                <ul className="list-disc list-inside text-gray-200 space-y-1 mt-2">
+                                    <li>¿Cuál activo tuvo el mejor <span className="font-semiblod">desempeño</span> en un periodo específico?</li>
+                                    <li>¿Cuál presenta mayor <span className="font-semibold">estabilidad</span> o riesgo?</li>
+                                    <li>¿Cómo se <span className="font-semibold">comporta</span> un activo frente a otros en diferentes contextos del mercado?</li>
+                                </ul>
                             </p>
                         </div>
 
@@ -53,7 +56,15 @@ const HitoRendimientoHistorico = () => {
 
                     {/* Carrusel arriba izquierda */}
                     <div className="col-start-1 col-end-2 row-start-1 row-end-2 rounded-xl bg-[#FFFFFF] p-4">
-                        <Carrusel slides={slides} />
+                        <table className="w-full  flex justify-center">
+                            <tr>
+                                <td>Fecha</td>
+                                <td>Accion A</td>
+                                <td>Accion B</td>
+                                <td>Bono</td>
+                            </tr>
+                            
+                        </table>
                     </div>
 
                     {/* Caja verde abajo izquierda */}
@@ -88,7 +99,7 @@ const HitoRendimientoHistorico = () => {
                             {/* Pregunta 1 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    1. ¿Qué significa “presupuesto”?
+                                    1. 
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">

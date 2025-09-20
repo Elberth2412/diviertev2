@@ -21,7 +21,7 @@ const HitoVarPortafolios = () => {
     return ( 
         <div>
             <Hitos />
-            <div className="h-screen bg-gray-500 h-auto p-4 gap-10 m-4 rounded-xl">
+            <div className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
 
                 <section className="bg-black rounded-xl">
                     <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">

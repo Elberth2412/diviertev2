@@ -23,11 +23,11 @@ export default function Carrusel({ slides }) {
                 }}
             >
                 {slides.map((s) => {
-                    return <img src={s} />;
+                    return <img src={s} ></img>;
                 })} x
             </div>
 
-            <div className="absolute top-0 h-full w-full justify-between items-center flex px-10 text-3xl">
+            <div className="absolute top-0 h-full w-full justify-between items-center flex px-4 text-3xl">
                 <button className = "text-white" onClick={previousSlide}>
                     <BsFillArrowLeftCircleFill />
                 </button>

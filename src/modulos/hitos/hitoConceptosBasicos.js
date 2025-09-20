@@ -23,7 +23,7 @@ const HitoConceptosBasicos = () => {
     return (
         <div>
             <Hitos />
-            <div className="h-screen bg-gray-500 h-auto p-4 gap-10 m-4 rounded-xl">
+            <div className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
 
                 <section className="bg-black rounded-xl">
                     <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
@@ -59,24 +59,26 @@ const HitoConceptosBasicos = () => {
                     </div>
 
                     {/* Caja verde abajo izquierda */}
-                    <div className="col-start-1 col-end-2 row-start-2 row-end-3 bg-[#FFFFFF] rounded-xl p-4 flex flex-col justify-center shadow-md">
-                        <h3 className="text-lg font-bold text-gray-800 mb-2">
-                            3. Ejemplo práctico simple
-                        </h3>
-                        <p className="text-gray-700 mb-2">
-                            Supongamos que una persona gana <span className="font-semibold">$1000</span> al mes.
-                        </p>
-                        <ul className="list-disc list-inside text-gray-700 space-y-1">
-                            <li>
-                                Si gasta <span className="font-semibold">$950</span> y ahorra <span className="font-semibold">$50</span>, tendrá un fondo pequeño para emergencias.
-                            </li>
-                            <li>
-                                Si invierte parte de ese ahorro, puede generar más ingresos, pero asume un <span className="text-red-600 font-medium">riesgo de pérdida</span>.
-                            </li>
-                        </ul>
-                        <p className="mt-3 text-gray-800 font-medium">
-                            🔑 Esto refuerza la conexión entre <span className="underline">presupuesto</span>, <span className="underline">ahorro</span>, <span className="underline">inversión</span> y <span className="underline">riesgo</span>.
-                        </p>
+                    <div className="col-start-1 col-end-2 row-start-2 row-end-3 bg-white rounded-xl p-4 flex flex-col justify-center shadow-md">
+                        <div className="bg-black rounded-xl p-4 flex flex-col items-start">
+                            <h1 className="text-3xl md:text-4xl xl:text-5xl font-extrabold text-white mb-4 leading-tight">
+                                Ejemplo práctico simple
+                            </h1>
+                            <p className="text-base md:text-lg xl:text-xl font-light text-justify text-gray-200">
+                                Supongamos que una persona gana <span className="font-semibold">$1000</span> al mes.
+                            </p>
+                            <ul className="list-disc list-inside text-gray-200 space-y-1">
+                                <li>
+                                    Si gasta <span className="font-semibold">$950</span> y ahorra <span className="font-semibold">$50</span>, tendrá un fondo pequeño para emergencias.
+                                </li>
+                                <li>
+                                    Si invierte parte de ese ahorro, puede generar más ingresos, pero asume un <span className="text-red-600 font-medium">riesgo de pérdida</span>.
+                                </li>
+                            </ul>
+                            <p className="text-base md:text-lg xl:text-xl font-light text-justify text-gray-200">
+                                🔑 Esto refuerza la conexión entre <span className="underline">presupuesto</span>, <span className="underline">ahorro</span>, <span className="underline">inversión</span> y <span className="underline">riesgo</span>.
+                            </p>
+                        </div>
                     </div>
 
 
@@ -171,7 +173,7 @@ const HitoConceptosBasicos = () => {
                                 </div>
                             </div>
 
-                            <button className="w-full mt-4 bg-black hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg">
+                            <button className="w-full mt-4 bg-black text-white font-medium py-2 px-4 rounded-lg hover:bg-gray-500">
                                 Enviar respuestas
                             </button>
                         </div>

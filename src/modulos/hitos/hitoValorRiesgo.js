@@ -1,19 +1,24 @@
 import Hitos from "./hitos";
 import imgEstadistica from "../../assets/estadistica.png";
-import imgRuta from "../../assets/ruta.png";
 import Carrusel from "../../componentes/carrusel";
+
+//imagenes:
+import car6 from "../../assets/car-6.jpg";
+import car7 from "../../assets/car-7.jpg";
+import car8 from "../../assets/car-8.jpg";
 
 const HitoValorRiesgo = () => {
 
     let slides = [
-        imgRuta,
-        imgEstadistica
+        car6,
+        car7,
+        car8
     ];
 
     return (
         <div>
             <Hitos />
-            <div className="h-screen bg-gray-500 h-auto p-4 gap-10 m-4 rounded-xl">
+            <div className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
 
                 <section className="bg-black rounded-xl">
                     <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
@@ -21,14 +26,27 @@ const HitoValorRiesgo = () => {
                         {/* Texto a la izquierda */}
                         <div className="mr-auto place-self-center lg:col-span-7">
                             <h1 className="max-w-2xl mb-4 text-4xl text-[#FFFFFF] font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
-                                Introducción breve
+                                Introducción teórica (definición + fórmula)
                             </h1>
-                            <p className="max-w-2xl mb-6 font-light text-justify text-[#FFFFFF] lg:mb-8 md:text-lg lg:text-xl">
-                                Las <span className="font-semibold">finanzas personales</span> son el conjunto de decisiones que una persona toma sobre cómo administrar su dinero:
-                                ingresos, gastos, ahorro, inversión y manejo de deudas.
+                            <p className="max-w-2xl mb-4 font-light text-justify text-[#FFFFFF] lg:mb-2 md:text-lg lg:text-xl">
+                                El <span className="font-semibold">Valor en Riesgo (VaR)</span> es una medida estadística que estima la pérdida máxima esperada en una inversión o portafolio durante un período de tiempo determinado y con un nivel de confianza específico.
                                 <br /><br />
-                                La <span className="font-semibold">gestión de riesgos</span> es la práctica de identificar y prevenir posibles pérdidas financieras.
-                                Comprender estos conceptos básicos ayuda a tomar mejores decisiones y asegurar estabilidad económica.
+                            </p>
+                            <h1 className="mb-4 text-xs text-[#FFFFFF] font-extrabold tracking-tight leading-none md:text-5xl xl:text-3xl">
+                                Ejemplo fórmula simplificada:
+                            </h1>
+                            <p className="max-w-2xl mb-4 font-light text-center text-[#FFFFFF] lg:mb-2 md:text-lg lg:text-xl">
+                                VaR=(MediadeRetornos−Z×σ)×ValordelaInversion
+                            </p>
+                            <h1 className="mb-4 text-xs text-[#FFFFFF] font-extrabold tracking-tight leading-none md:text-5xl xl:text-3xl">
+                                Donde:
+                            </h1>
+                            <p className="max-w-2xl mb-4 font-light text-center text-[#FFFFFF] lg:mb-2 md:text-lg lg:text-xl">
+                                <ul>
+                                    <li><span className="font-semibold">Media</span> = rendimiento promedio.</li>
+                                    <li><span className="font-semibold">σ (sigma)</span> = volatilidad (desviación estándar).</li>
+                                    <li><span className="font-semibold">Z</span> = factor asociado al nivel de confianza (ej. 1.65 para 95%).</li>
+                                </ul>
                             </p>
                         </div>
 
@@ -49,24 +67,20 @@ const HitoValorRiesgo = () => {
                     </div>
 
                     {/* Caja verde abajo izquierda */}
-                    <div className="col-start-1 col-end-2 row-start-2 row-end-3 bg-[#FFFFFF] rounded-xl p-4 flex flex-col justify-center shadow-md">
-                        <h3 className="text-lg font-bold text-gray-800 mb-2">
-                            3. Ejemplo práctico simple
-                        </h3>
-                        <p className="text-gray-700 mb-2">
-                            Supongamos que una persona gana <span className="font-semibold">$1000</span> al mes.
-                        </p>
-                        <ul className="list-disc list-inside text-gray-700 space-y-1">
+                    <div className="col-start-1 col-end-2 row-start-2 row-end-3 bg-white rounded-xl p-4 flex flex-col justify-center shadow-md">
+                        <div className="bg-black rounded-xl p-4 flex flex-col items-start   ">
+                            <h1 className="text-3xl md:text-4xl xl:text-5xl font-extrabold text-white mb-4 leading-tight">
+                                Ejemplo práctico
+                            </h1>
+                            <ul className="list-disc list-inside text-gray-200 space-y-1">
                             <li>
-                                Si gasta <span className="font-semibold">$950</span> y ahorra <span className="font-semibold">$50</span>, tendrá un fondo pequeño para emergencias.
+                                Una inversión de $10,000 con una volatilidad de 2% diaria, al 95% de confianza, podría tener un VaR diario = $330.
                             </li>
                             <li>
-                                Si invierte parte de ese ahorro, puede generar más ingresos, pero asume un <span className="text-red-600 font-medium">riesgo de pérdida</span>.
+                               Esto significa: con un 95% de probabilidad, la pérdida máxima en un día no superará los $330
                             </li>
                         </ul>
-                        <p className="mt-3 text-gray-800 font-medium">
-                            🔑 Esto refuerza la conexión entre <span className="underline">presupuesto</span>, <span className="underline">ahorro</span>, <span className="underline">inversión</span> y <span className="underline">riesgo</span>.
-                        </p>
+                        </div>
                     </div>
 
 
@@ -80,20 +94,20 @@ const HitoValorRiesgo = () => {
                             {/* Pregunta 1 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    1. ¿Qué significa “presupuesto”?
+                                    1. ¿Qué riesgo afecta a una inversión si los precios caen repentinamente en la bolsa?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un plan para administrar ingresos y gastos
+                                        Riesgo de mercado
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un ahorro fijo mensual
+                                        Riesgo de liquidez
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un préstamo bancario
+                                        Riesgo político
                                     </label>
                                 </div>
                             </div>
@@ -101,20 +115,20 @@ const HitoValorRiesgo = () => {
                             {/* Pregunta 2 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    2. ¿Cuál es la diferencia entre ahorro e inversión?
+                                    2. ¿Qué sucede si la inflación supera la rentabilidad de una inversión?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        El ahorro guarda dinero, la inversión lo hace crecer
+                                        El poder adquisitivo disminuye ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        No hay ninguna diferencia
+                                        La inversión se vuelve más líquida
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        El ahorro implica más riesgo que la inversión
+                                        El riesgo de mercado aumenta
                                     </label>
                                 </div>
                             </div>
@@ -122,20 +136,20 @@ const HitoValorRiesgo = () => {
                             {/* Pregunta 3 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    3. ¿Qué riesgos financieros pueden afectar a una persona?
+                                    3. ¿Qué nivel de confianza se usa comúnmente en VaR?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Pérdida de empleo
+                                        99%
                                     </label>
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Endeudamiento excesivo
+                                        95%
                                     </label>
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Inflación
+                                        90%
                                     </label>
                                 </div>
                             </div>
@@ -143,25 +157,25 @@ const HitoValorRiesgo = () => {
                             {/* Pregunta 4 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    4. ¿Por qué es importante gestionar los riesgos en las finanzas personales?
+                                    4. ¿En qué contextos se utiliza el VaR?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        Para evitar pérdidas económicas y proteger el futuro
+                                        Bancos para calcular reservas de capital
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        Para gastar sin preocupaciones
+                                        Inversores individuales para evaluar riesgos
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        No es importante, los riesgos no afectan las finanzas
+                                        Empresas para planificar decisiones financieras
                                     </label>
                                 </div>
                             </div>
 
-                            <button className="w-full mt-4 bg-black hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg">
+                            <button className="w-full mt-4 bg-black hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg">
                                 Enviar respuestas
                             </button>
                         </div>

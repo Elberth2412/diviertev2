@@ -1,27 +1,22 @@
 import Hitos from "./hitos";
 import Carrusel from "../../componentes/carrusel";
+import CalculadoraEstadisticas from "../../componentes/calculadoraEstadisticas";
 
 //Imagenes del carrusel:
-import car1 from "../../assets/car-1.png";
-import car2 from "../../assets/car-2.png";
-import car3 from "../../assets/car-3.png";
-import car4 from "../../assets/car-4.png";
-import car5 from "../../assets/car-5.png";
+import car14 from "../../assets/car-14.jpg";
+import car15 from "../../assets/car-15.jpg";
 
 const HitoEstadisticasBasicas = () => {
 
     const slides = [
-        car1,
-        car2,
-        car3,
-        car4,
-        car5
+        car14,
+        car15
     ];
 
-    return ( 
+    return (
         <div>
             <Hitos />
-            <div className="h-screen bg-gray-500 h-auto p-4 gap-10 m-4 rounded-xl">
+            <div className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
 
                 <section className="bg-black rounded-xl">
                     <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
@@ -29,20 +24,26 @@ const HitoEstadisticasBasicas = () => {
                         {/* Texto a la izquierda */}
                         <div className="mr-auto place-self-center lg:col-span-7">
                             <h1 className="max-w-2xl mb-4 text-4xl text-[#FFFFFF] font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
-                                Introducción breve
+                                Introducción teórica
                             </h1>
                             <p className="max-w-2xl mb-6 font-light text-justify text-[#FFFFFF] lg:mb-8 md:text-lg lg:text-xl">
-                                Las <span className="font-semibold">finanzas personales</span> son el conjunto de decisiones que una persona toma sobre cómo administrar su dinero:
-                                ingresos, gastos, ahorro, inversión y manejo de deudas.
+                                En el análisis financiero, las estadísticas descriptivas permiten resumir información compleja de los datos en indicadores clave. Entre ellas, la media aritmética y la desviación estándar son fundamentales para comprender tanto el rendimiento promedio de una inversión como el nivel de riesgo que esta conlleva.
                                 <br /><br />
-                                La <span className="font-semibold">gestión de riesgos</span> es la práctica de identificar y prevenir posibles pérdidas financieras.
-                                Comprender estos conceptos básicos ayuda a tomar mejores decisiones y asegurar estabilidad económica.
+                                <ul className="list-disc list-inside text-gray-200 space-y-1">
+                                    <li>
+                                        La <span className="font-semibold">media </span> nos dice cuál ha sido el rendimiento promedio de un activo en un periodo de tiempo.
+                                    </li>
+                                    <li>
+                                        La <span className="font-semibold">desviacion estandar</span> mide la variabilidad o incertidumbre de esos rendimientos: a mayor desviación, mayor es el riesgo.
+                                    </li>
+                                </ul>
+
                             </p>
                         </div>
 
                         {/* Imagen a la derecha */}
                         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex bg-white rounded-xl">
-                            <img className="rounded-xl bg-white w-auto p-5" src={car1} alt="mockup" />
+                            <img className="rounded-xl bg-white w-auto p-5" src={car14} alt="mockup" />
                         </div>
 
                     </div>
@@ -58,23 +59,7 @@ const HitoEstadisticasBasicas = () => {
 
                     {/* Caja verde abajo izquierda */}
                     <div className="col-start-1 col-end-2 row-start-2 row-end-3 bg-[#FFFFFF] rounded-xl p-4 flex flex-col justify-center shadow-md">
-                        <h3 className="text-lg font-bold text-gray-800 mb-2">
-                            3. Ejemplo práctico simple
-                        </h3>
-                        <p className="text-gray-700 mb-2">
-                            Supongamos que una persona gana <span className="font-semibold">$1000</span> al mes.
-                        </p>
-                        <ul className="list-disc list-inside text-gray-700 space-y-1">
-                            <li>
-                                Si gasta <span className="font-semibold">$950</span> y ahorra <span className="font-semibold">$50</span>, tendrá un fondo pequeño para emergencias.
-                            </li>
-                            <li>
-                                Si invierte parte de ese ahorro, puede generar más ingresos, pero asume un <span className="text-red-600 font-medium">riesgo de pérdida</span>.
-                            </li>
-                        </ul>
-                        <p className="mt-3 text-gray-800 font-medium">
-                            🔑 Esto refuerza la conexión entre <span className="underline">presupuesto</span>, <span className="underline">ahorro</span>, <span className="underline">inversión</span> y <span className="underline">riesgo</span>.
-                        </p>
+                        <CalculadoraEstadisticas />
                     </div>
 
 
@@ -88,20 +73,20 @@ const HitoEstadisticasBasicas = () => {
                             {/* Pregunta 1 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    1. ¿Qué significa “presupuesto”?
+                                    1. ¿Qué representa la media en un conjunto de rendimientos financieros?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un plan para administrar ingresos y gastos
+                                        El rendimiento promedio ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un ahorro fijo mensual
+                                        La variabilidad de los rendimientos
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un préstamo bancario
+                                        El riesgo de liquidez
                                     </label>
                                 </div>
                             </div>
@@ -109,20 +94,20 @@ const HitoEstadisticasBasicas = () => {
                             {/* Pregunta 2 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    2. ¿Cuál es la diferencia entre ahorro e inversión?
+                                    2. ¿Qué indica una desviación estándar alta en los rendimientos?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        El ahorro guarda dinero, la inversión lo hace crecer
+                                        Que el activo es muy estable
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        No hay ninguna diferencia
+                                        Que existe una alta volatilidad ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        El ahorro implica más riesgo que la inversión
+                                        Que la media es baja
                                     </label>
                                 </div>
                             </div>
@@ -130,20 +115,20 @@ const HitoEstadisticasBasicas = () => {
                             {/* Pregunta 3 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    3. ¿Qué riesgos financieros pueden afectar a una persona?
+                                    3. Si un activo tiene una media positiva pero una desviación estándar muy alta, ¿qué significa?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Pérdida de empleo
+                                        Que ofrece un buen rendimiento pero con riesgo elevado ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Endeudamiento excesivo
+                                        Que siempre dará ganancias seguras
                                     </label>
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Inflación
+                                        Que no hay incertidumbre en la inversión
                                     </label>
                                 </div>
                             </div>
@@ -151,25 +136,25 @@ const HitoEstadisticasBasicas = () => {
                             {/* Pregunta 4 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    4. ¿Por qué es importante gestionar los riesgos en las finanzas personales?
+                                    4. ¿Por qué es importante calcular la media y la desviación estándar en finanzas?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        Para evitar pérdidas económicas y proteger el futuro
+                                        Para conocer la rentabilidad y el riesgo de un activo ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        Para gastar sin preocupaciones
+                                        Para gastar calcular impuestos
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        No es importante, los riesgos no afectan las finanzas
+                                        Para asegurar ganancias garantizadas
                                     </label>
                                 </div>
                             </div>
 
-                            <button className="w-full mt-4 bg-black hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg">
+                            <button className="w-full mt-4 bg-black hover:bg-gray-500 text-white font-medium py-2 px-4 rounded-lg">
                                 Enviar respuestas
                             </button>
                         </div>
@@ -179,7 +164,7 @@ const HitoEstadisticasBasicas = () => {
 
             </div>
         </div>
-     );
+    );
 }
- 
+
 export default HitoEstadisticasBasicas;
