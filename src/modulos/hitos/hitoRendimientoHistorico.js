@@ -1,24 +1,9 @@
 import Hitos from "./hitos";
-import Carrusel from "../../componentes/carrusel";
-
-//Imagenes del carrusel:
-import car1 from "../../assets/car-1.png";
-import car2 from "../../assets/car-2.png";
-import car3 from "../../assets/car-3.png";
-import car4 from "../../assets/car-4.png";
-import car5 from "../../assets/car-5.png";
+import ComparadorActivos from "../../componentes/comparadorActivos";
 
 const HitoRendimientoHistorico = () => {
 
-    const slides = [
-        car1,
-        car2,
-        car3,
-        car4,
-        car5
-    ];
-
-    return ( 
+    return (
         <div>
             <Hitos />
             <div className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
@@ -45,7 +30,7 @@ const HitoRendimientoHistorico = () => {
 
                         {/* Imagen a la derecha */}
                         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex bg-white rounded-xl">
-                            <img className="rounded-xl bg-white w-auto p-5" src={car1} alt="mockup" />
+                            <img className="rounded-xl bg-white w-auto p-5" src="" alt="mockup" />
                         </div>
 
                     </div>
@@ -55,37 +40,65 @@ const HitoRendimientoHistorico = () => {
                 <div className="grid grid-cols-2 grid-rows-2 gap-4 bg-black rounded-xl mt-4 p-4">
 
                     {/* Carrusel arriba izquierda */}
-                    <div className="col-start-1 col-end-2 row-start-1 row-end-2 rounded-xl bg-[#FFFFFF] p-4">
-                        <table className="w-full  flex justify-center">
-                            <tr>
-                                <td>Fecha</td>
-                                <td>Accion A</td>
-                                <td>Accion B</td>
-                                <td>Bono</td>
-                            </tr>
-                            
-                        </table>
+                    <div className="col-start-1 col-end-2 row-start-1 row-end-2 rounded-xl flex flex-col justify-center bg-[#FFFFFF] p-4">
+                        <div className="bg-black rounded-xl p-4 flex flex-col items-start   ">
+                            <h1 className="text-3xl md:text-4xl xl:text-5xl font-extrabold text-white mb-6 leading-tight">
+                                ACCIONES
+                            </h1>
+                            <table className="w-full text-[#FFFFFF] border-collapse border border-[#FFFFFF]">
+                                <thead className="border border-gray-300 ">
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Accion A</th>
+                                        <th>Accion B</th>
+                                        <th>Bono</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="border border">
+                                    <tr>
+                                        <th>Enero</th>
+                                        <th>2.0</th>
+                                        <th>1.5</th>
+                                        <th>0.5</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Febrero</th>
+                                        <th>3.0</th>
+                                        <th>-1.0</th>
+                                        <th>0.4</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Marzo</th>
+                                        <th>-2.0</th>
+                                        <th>4.0</th>
+                                        <th>0.6</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Abril</th>
+                                        <th>1.0</th>
+                                        <th>2.0</th>
+                                        <th>0.5</th>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                            <p className="max-w-2xl mt-6 font-light text-justify text-[#FFFFFF] lg:mb-8 md:text-lg lg:text-xl">
+                                <span className="font-semibold">INTERPREACIONES</span>
+
+                                <ul className="list-disc list-inside text-[#FFFFFF]space-y-1 mt-2">
+                                    <li><span className="font-semibold">Acción A</span> tuvo mejor desempeño acumulado en el primer trimestre (5.9%), pero mostró caídas bruscas en marzo.</li>
+                                    <li><span className="font-semibold">Acción B</span> fue más volátil: grandes pérdidas en febrero y fuertes ganancias en marzo.</li>
+                                    <li><span className="font-semibold">Bono</span> fue el más estable, con rendimientos pequeños pero consistentes.</li>
+                                </ul>
+                            </p>
+                        </div>
                     </div>
 
                     {/* Caja verde abajo izquierda */}
                     <div className="col-start-1 col-end-2 row-start-2 row-end-3 bg-[#FFFFFF] rounded-xl p-4 flex flex-col justify-center shadow-md">
-                        <h3 className="text-lg font-bold text-gray-800 mb-2">
-                            3. Ejemplo práctico simple
-                        </h3>
-                        <p className="text-gray-700 mb-2">
-                            Supongamos que una persona gana <span className="font-semibold">$1000</span> al mes.
-                        </p>
-                        <ul className="list-disc list-inside text-gray-700 space-y-1">
-                            <li>
-                                Si gasta <span className="font-semibold">$950</span> y ahorra <span className="font-semibold">$50</span>, tendrá un fondo pequeño para emergencias.
-                            </li>
-                            <li>
-                                Si invierte parte de ese ahorro, puede generar más ingresos, pero asume un <span className="text-red-600 font-medium">riesgo de pérdida</span>.
-                            </li>
-                        </ul>
-                        <p className="mt-3 text-gray-800 font-medium">
-                            🔑 Esto refuerza la conexión entre <span className="underline">presupuesto</span>, <span className="underline">ahorro</span>, <span className="underline">inversión</span> y <span className="underline">riesgo</span>.
-                        </p>
+                        <div className="p-4">
+                            <ComparadorActivos />
+                        </div>
                     </div>
 
 
@@ -99,20 +112,20 @@ const HitoRendimientoHistorico = () => {
                             {/* Pregunta 1 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    1. 
+                                    1. ¿Qué significa que un activo tenga un rendimiento promedio mayor que otro?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un plan para administrar ingresos y gastos
+                                        Que siempre es la mejor opción para invertir.
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un ahorro fijo mensual
+                                        Que, en promedio, generó más ganancias que el otro. ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un préstamo bancario
+                                        Que no presenta riesgos financieros.
                                     </label>
                                 </div>
                             </div>
@@ -120,20 +133,20 @@ const HitoRendimientoHistorico = () => {
                             {/* Pregunta 2 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    2. ¿Cuál es la diferencia entre ahorro e inversión?
+                                    2. ¿Por qué no siempre el activo con mayor rendimiento histórico es la mejor opción?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        El ahorro guarda dinero, la inversión lo hace crecer
+                                        Porque puede estar asociado a una mayor volatilidad o riesgo. ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        No hay ninguna diferencia
+                                        Porque siempre tendrá pérdidas a largo plazo.
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        El ahorro implica más riesgo que la inversión
+                                        Porque no genera ningún beneficio real.
                                     </label>
                                 </div>
                             </div>
@@ -141,20 +154,20 @@ const HitoRendimientoHistorico = () => {
                             {/* Pregunta 3 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    3. ¿Qué riesgos financieros pueden afectar a una persona?
+                                    3. ¿Qué relación hay entre estabilidad (desviación estándar baja) y el rendimiento histórico?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Pérdida de empleo
+                                        Una desviación baja implica menos riesgo, pero no garantiza un mayor rendimiento. ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Endeudamiento excesivo
+                                        Menor desviación siempre asegura más ganancias.
                                     </label>
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Inflación
+                                        Mayor desviación asegura menos riesgo.
                                     </label>
                                 </div>
                             </div>
@@ -162,20 +175,20 @@ const HitoRendimientoHistorico = () => {
                             {/* Pregunta 4 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    4. ¿Por qué es importante gestionar los riesgos en las finanzas personales?
+                                    4. ¿Qué significa que dos activos tengan rendimientos similares, pero distinta desviación estándar?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        Para evitar pérdidas económicas y proteger el futuro
+                                        Que el activo con menor desviación es menos riesgoso y más predecible. ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        Para gastar sin preocupaciones
+                                        Que ambos tienen exactamente el mismo riesgo.
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        No es importante, los riesgos no afectan las finanzas
+                                        Que el activo con más desviación es siempre mejor opción.
                                     </label>
                                 </div>
                             </div>
@@ -190,7 +203,7 @@ const HitoRendimientoHistorico = () => {
 
             </div>
         </div>
-     );
+    );
 }
- 
+
 export default HitoRendimientoHistorico;

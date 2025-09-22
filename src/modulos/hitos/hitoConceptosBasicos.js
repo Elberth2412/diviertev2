@@ -1,6 +1,5 @@
 import Hitos from "./hitos";
 import imgEstadistica from "../../assets/estadistica.png";
-import imgRuta from "../../assets/ruta.png";
 import Carrusel from "../../componentes/carrusel";
 
 //Imagenes del carrusel:

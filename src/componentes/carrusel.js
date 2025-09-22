@@ -23,8 +23,8 @@ export default function Carrusel({ slides }) {
                 }}
             >
                 {slides.map((s) => {
-                    return <img src={s} ></img>;
-                })} x
+                    return <img src={s} alt="carrusel"/>;
+                })}
             </div>
 
             <div className="absolute top-0 h-full w-full justify-between items-center flex px-4 text-3xl">
