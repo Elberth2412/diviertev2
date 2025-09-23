@@ -25,7 +25,7 @@ const HitoConceptosBasicos = () => {
             <div className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
 
                 <section className="bg-black rounded-xl">
-                    <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+                    <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 items-center items-center">
 
                         {/* Texto a la izquierda */}
                         <div className="mr-auto place-self-center lg:col-span-7">
@@ -42,8 +42,8 @@ const HitoConceptosBasicos = () => {
                         </div>
 
                         {/* Imagen a la derecha */}
-                        <div className="hidden lg:mt-0 lg:col-span-5 lg:flex bg-white rounded-xl">
-                            <img className="rounded-xl bg-white w-auto p-5" src={imgEstadistica} alt="mockup" />
+                        <div className="hidden lg:mt-0 lg:col-span-5 lg:flex bg-[#FFFFFF] rounded-xl h-[350px]">
+                            <img className="w-full p-4" src={imgEstadistica} alt="mockup" />
                         </div>
 
                     </div>

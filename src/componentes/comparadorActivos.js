@@ -81,7 +81,7 @@ const ComparadorActivos = () => {
                 <div>
                     <span className="font-semibold">ACTIVO A</span>
                     <textarea
-                        placeholder="Precios Activo 1 (ej: 10,12,15)"
+                        placeholder="Precios (ej: 10,12,15)"
                         value={activoA}
                         onChange={(e) => setActivoA(e.target.value)}
                         className="border p-1 rounded w-full"
@@ -91,7 +91,7 @@ const ComparadorActivos = () => {
                 <div>
                     <span className="font-semibold">ACTIVO A</span>
                     <textarea
-                        placeholder="Precios Activo 2 (ej: 8,9,11)"
+                        placeholder="Precios (ej: 8,9,11)"
                         value={activoB}
                         onChange={(e) => setActivoB(e.target.value)}
                         className="border p-1 rounded w-full"
