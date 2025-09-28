@@ -45,10 +45,10 @@ const HitoFactoresRiesgo = () => {
                 </section>
 
 
-                <div className="grid grid-cols-2 grid-rows-2 gap-4 bg-black rounded-xl mt-4 p-4">
+                <div className="grid grid-cols-2 grid-rows-[auto auto] gap-4 bg-black rounded-xl mt-4 p-4">
 
                     {/* Carrusel arriba izquierda */}
-                    <div className="col-start-1 col-end-2 row-start-1 row-end-2 rounded-xl bg-[#FFFFFF] p-4">
+                    <div className="col-start-1 col-end-2 row-start-1 row-end-2 rounded-xl bg-[#FFFFFF] p-4 flex items-center">
                         <Carrusel slides={slides} />
                     </div>
 
@@ -69,7 +69,7 @@ const HitoFactoresRiesgo = () => {
 
 
                     {/* Preguntas ocupando toda la segunda columna */}
-                    <div className="bg-[#FFFFFF] col-start-2 col-end-3 row-span-2 flex items-center justify-center rounded-xl">
+                    <div className="bg-[#FFFFFF] col-start-2 col-end-3 row-span-2 flex items-center justify-center rounded-xl p-4">
                         <div className="bg-white rounded-xl shadow-2xl p-8 max-w-lg w-full">
                             <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
                                 Preguntas de Autoevaluación

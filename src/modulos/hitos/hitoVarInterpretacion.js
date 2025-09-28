@@ -1,5 +1,6 @@
 import Hitos from "./hitos";
 import Carrusel from "../../componentes/carrusel";
+import VarEscenarios from "../../componentes/varEscenarios";
 
 //Imagenes del carrusel:
 import car1 from "../../assets/car-1.png";
@@ -32,11 +33,17 @@ const HitoVarInterpretacion = () => {
                                 Introducción breve
                             </h1>
                             <p className="max-w-2xl mb-6 font-light text-justify text-[#FFFFFF] lg:mb-8 md:text-lg lg:text-xl">
-                                Las <span className="font-semibold">finanzas personales</span> son el conjunto de decisiones que una persona toma sobre cómo administrar su dinero:
-                                ingresos, gastos, ahorro, inversión y manejo de deudas.
+                                El <span className="font-semibold">Valor en Riesgo (VaR)</span> no es único ni fijo. Cambia según el escenario del mercado:
                                 <br /><br />
-                                La <span className="font-semibold">gestión de riesgos</span> es la práctica de identificar y prevenir posibles pérdidas financieras.
-                                Comprender estos conceptos básicos ayuda a tomar mejores decisiones y asegurar estabilidad económica.
+                                <ul className="list-disc list-inside text-gray-200 space-y-1 mb-4">
+                                    <li><span className = "font-semibold">Escenario optimista:</span> refleja un entorno con baja volatilidad. El VaR será más pequeño (poca pérdida esperada).</li>
+                                    <li><span className="font-semibold">Escenario conservador:</span> es el escenario base o promedio. Aquí el VaR refleja un riesgo estándar.</li>
+                                    <li><span className="font-semibold">Escenario pesimista:</span> asume un mercado muy volátil o crisis financiera. El VaR aumenta y refleja mayores pérdidas posibles.</li>
+                                </ul>
+                                <h1 className="mb-4 text-xs text-[#FFFFFF] font-extrabold tracking-tight leading-none md:text-5xl xl:text-3xl">
+                                    Objetivo
+                                </h1>
+                                Aprender que el VaR no debe verse de manera aislada, sino en relación con distintos contextos del mercado, para mejorar la toma de decisiones financieras.
                             </p>
                         </div>
 
@@ -49,37 +56,16 @@ const HitoVarInterpretacion = () => {
                 </section>
 
 
-                <div className="grid grid-cols-2 grid-rows-2 gap-4 bg-black rounded-xl mt-4 p-4">
+                <div className="grid grid-cols-2 grid-rows-[auto auto] gap-4 bg-black rounded-xl mt-4 p-4">
 
-                    {/* Carrusel arriba izquierda */}
-                    <div className="col-start-1 col-end-2 row-start-1 row-end-2 rounded-xl bg-[#FFFFFF] p-4">
-                        <Carrusel slides={slides} />
-                    </div>
-
-                    {/* Caja verde abajo izquierda */}
-                    <div className="col-start-1 col-end-2 row-start-2 row-end-3 bg-[#FFFFFF] rounded-xl p-4 flex flex-col justify-center shadow-md">
-                        <h3 className="text-lg font-bold text-gray-800 mb-2">
-                            3. Ejemplo práctico simple
-                        </h3>
-                        <p className="text-gray-700 mb-2">
-                            Supongamos que una persona gana <span className="font-semibold">$1000</span> al mes.
-                        </p>
-                        <ul className="list-disc list-inside text-gray-700 space-y-1">
-                            <li>
-                                Si gasta <span className="font-semibold">$950</span> y ahorra <span className="font-semibold">$50</span>, tendrá un fondo pequeño para emergencias.
-                            </li>
-                            <li>
-                                Si invierte parte de ese ahorro, puede generar más ingresos, pero asume un <span className="text-red-600 font-medium">riesgo de pérdida</span>.
-                            </li>
-                        </ul>
-                        <p className="mt-3 text-gray-800 font-medium">
-                            🔑 Esto refuerza la conexión entre <span className="underline">presupuesto</span>, <span className="underline">ahorro</span>, <span className="underline">inversión</span> y <span className="underline">riesgo</span>.
-                        </p>
+                    {/*izquierda */}
+                    <div className="col-start-1 col-end-2 row-end-2 rounded-xl bg-[#FFFFFF] p-4">
+                        <VarEscenarios />
                     </div>
 
 
-                    {/* Preguntas ocupando toda la segunda columna */}
-                    <div className="bg-[#FFFFFF] col-start-2 col-end-3 row-span-2 flex items-center justify-center rounded-xl">
+                    {/* Preguntas derecha*/}
+                    <div className="bg-[#FFFFFF] col-start-2 col-end-3 flex items-center justify-center rounded-xl">
                         <div className="bg-white rounded-xl shadow-2xl p-8 max-w-lg w-full">
                             <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
                                 Preguntas de Autoevaluación
@@ -88,20 +74,20 @@ const HitoVarInterpretacion = () => {
                             {/* Pregunta 1 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    1. ¿Qué significa “presupuesto”?
+                                    1. ¿En qué escenario el riesgo se vuelve inaceptable?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un plan para administrar ingresos y gastos
+                                        Cuando la pérdida es pequeña y controlada.
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un ahorro fijo mensual
+                                        Cuando la pérdida supera el nivel que estoy dispuesto a asumir. ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un préstamo bancario
+                                        Nunca, porque toda inversión es segura.
                                     </label>
                                 </div>
                             </div>
@@ -109,20 +95,20 @@ const HitoVarInterpretacion = () => {
                             {/* Pregunta 2 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    2. ¿Cuál es la diferencia entre ahorro e inversión?
+                                    2. ¿Te sentirías cómodo invirtiendo si la pérdida máxima posible es -30%?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        El ahorro guarda dinero, la inversión lo hace crecer
+                                        Sí, porque podría recuperar en el futuro.
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        No hay ninguna diferencia
+                                        No, porque supera mi tolerancia al riesgo. ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        El ahorro implica más riesgo que la inversión
+                                        No importa, el rendimiento siempre compensa la pérdida.
                                     </label>
                                 </div>
                             </div>
@@ -130,20 +116,20 @@ const HitoVarInterpretacion = () => {
                             {/* Pregunta 3 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    3. ¿Qué riesgos financieros pueden afectar a una persona?
+                                    3. ¿Qué escenario se parece más a las condiciones actuales del mercado?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Pérdida de empleo
+                                        Escenario optimista.
                                     </label>
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Endeudamiento excesivo
+                                        Escenario conservador. ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Inflación
+                                        Escenario pesimista.
                                     </label>
                                 </div>
                             </div>
@@ -151,20 +137,20 @@ const HitoVarInterpretacion = () => {
                             {/* Pregunta 4 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    4. ¿Por qué es importante gestionar los riesgos en las finanzas personales?
+                                    4. ¿Por qué es importante analizar el VaR en varios escenarios (optimista, conservador, pesimista)?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        Para evitar pérdidas económicas y proteger el futuro
+                                        Para entender mejor cómo cambia el riesgo en distintos contextos. ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        Para gastar sin preocupaciones
+                                        Para complicar innecesariamente los cálculos.
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        No es importante, los riesgos no afectan las finanzas
+                                        Porque los tres escenarios siempre dan el mismo resultado.
                                     </label>
                                 </div>
                             </div>

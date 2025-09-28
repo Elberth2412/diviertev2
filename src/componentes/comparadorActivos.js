@@ -114,9 +114,9 @@ const ComparadorActivos = () => {
 
             {/* Gráfico */}
             {data.length > 0 && (
-                <div ref={chartRef} className="mt-2 grid grid-cols-2 place-items-start gap-4 items-center">
-                    <ResponsiveContainer width="100%" height={200}>
-                        <LineChart data={data}>
+                <div ref={chartRef} className="mt-2 grid grid-cols-2 place-items-start gap-4">
+                    <ResponsiveContainer width="100%" height={200} >
+                        <LineChart data={data} margin={{ top: 20, right: 15, left: -35, bottom: 5 }}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="dia" />
                             <YAxis />

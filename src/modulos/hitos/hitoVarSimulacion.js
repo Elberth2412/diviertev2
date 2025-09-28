@@ -36,7 +36,6 @@ const HitoVarSimulacion = () => {
                                     EJEMPLO
                                 </h1>
                                 Con 100 datos de rendimientos, si quieres un VaR al 95%, tomas el 5° peor rendimiento (percentil 5%).
-
                             </p>
                         </div>
 
@@ -116,7 +115,7 @@ const HitoVarSimulacion = () => {
                                     <p className="max-w-2xl font-light text-justify text-[#FFFFFF] md:text-lg lg:text-xl">
                                         <span className="font-semibold">PRECEDIMIENTO</span>
 
-                                        <ul className="list-disc list-inside text-[#FFFFFF]space-y-1 mt-2">
+                                        <ul className="list-disc list-inside text-[#FFFFFF] space-y-1 mt-2">
                                             <li><span className="font-semibold">Ordenamos los rendimientos: </span>[-0.98%, -0.96%, 2.0%, 2.97%]</li>
                                             <li><span className="font-semibold">Percentil 5% ≈ </span>-0.98%</li>
                                             <li><span className="font-semibold">VaR (95%)= </span>-0.98% de $1000 = -$9.8</li>
@@ -135,10 +134,7 @@ const HitoVarSimulacion = () => {
                     </div>
 
                     {/* Caja verde abajo izquierda */}
-                    <div className="col-start-1 col-end-2 row-start-2 row-end-3 bg-[#FFFFFF] rounded-xl p-4 flex flex-col justify-center shadow-md">
-                        <h3 className="text-lg font-bold text-gray-800 mb-2">
-                            3. Ejemplo práctico simple
-                        </h3>
+                    <div className="col-start-1 col-end-2 row-start-2 row-end-3 bg-[#FFFFFF] rounded-xl p-4 flex flex-col justify-center shadow-2xl">
                         <SimuladorVaR />
                     </div>
 
@@ -153,20 +149,20 @@ const HitoVarSimulacion = () => {
                             {/* Pregunta 1 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    1. ¿Qué significa “presupuesto”?
+                                    1. ¿Qué mide el Valor en Riesgo (VaR)?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un plan para administrar ingresos y gastos
+                                        La ganancia máxima que un activo puede tener.
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un ahorro fijo mensual
+                                        La pérdida máxima esperada en un horizonte y nivel de confianza dado. ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un préstamo bancario
+                                        La rentabilidad promedio de un activo.
                                     </label>
                                 </div>
                             </div>
@@ -174,20 +170,20 @@ const HitoVarSimulacion = () => {
                             {/* Pregunta 2 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    2. ¿Cuál es la diferencia entre ahorro e inversión?
+                                    2. ¿Por qué es importante usar un horizonte temporal en el VaR?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        El ahorro guarda dinero, la inversión lo hace crecer
+                                        Para ajustar la estimación de riesgo según el periodo de inversión. ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        No hay ninguna diferencia
+                                        Porque el horizonte no afecta el cálculo.
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="ahorro" className="mr-2" />
-                                        El ahorro implica más riesgo que la inversión
+                                        Porque siempre se calcula a 1 día sin importar el caso.
                                     </label>
                                 </div>
                             </div>
@@ -195,20 +191,20 @@ const HitoVarSimulacion = () => {
                             {/* Pregunta 3 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    3. ¿Qué riesgos financieros pueden afectar a una persona?
+                                    3. ¿Qué ocurre si el dataset de precios históricos es muy pequeño?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Pérdida de empleo
+                                        El VaR será más preciso.
                                     </label>
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Endeudamiento excesivo
+                                        El VaR puede no reflejar riesgos reales y dar valores engañosos. ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="checkbox" className="mr-2" />
-                                        Inflación
+                                        No importa la cantidad de datos, siempre se obtiene el mismo VaR.
                                     </label>
                                 </div>
                             </div>
@@ -216,20 +212,20 @@ const HitoVarSimulacion = () => {
                             {/* Pregunta 4 */}
                             <div className="mb-6">
                                 <p className="font-medium text-gray-700 mb-2">
-                                    4. ¿Por qué es importante gestionar los riesgos en las finanzas personales?
+                                    4. ¿Cómo se interpreta un VaR del 95% de 2% en un horizonte de 10 días?
                                 </p>
                                 <div className="space-y-2">
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        Para evitar pérdidas económicas y proteger el futuro
+                                        Con 95% de confianza, la pérdida máxima en 10 días no superará el 2%. ✅
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        Para gastar sin preocupaciones
+                                        Con 95% de confianza, la ganancia mínima será del 2%.
                                     </label>
                                     <label className="flex items-center">
                                         <input type="radio" name="riesgos" className="mr-2" />
-                                        No es importante, los riesgos no afectan las finanzas
+                                        Se garantiza que la inversión siempre tendrá un retorno del 2%.
                                     </label>
                                 </div>
                             </div>
