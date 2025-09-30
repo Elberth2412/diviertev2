@@ -1,6 +1,7 @@
 import Hitos from "./hitos";
 import imgEstadistica from "../../assets/estadistica.png";
 import Carrusel from "../../componentes/carrusel";
+import EvaluacionHito from "../../componentes/evaluacionHito";
 
 //imagenes:
 import car6 from "../../assets/car-6.jpg";
@@ -68,117 +69,83 @@ const HitoValorRiesgo = () => {
 
                     {/* Caja verde abajo izquierda */}
                     <div className="col-start-1 col-end-2 row-start-2 row-end-3 bg-white rounded-xl p-4 flex flex-col justify-center shadow-md">
-                        <div className="bg-black rounded-xl p-4 flex flex-col items-start   ">
-                            <h1 className="text-3xl md:text-4xl xl:text-5xl font-extrabold text-white mb-4 leading-tight">
-                                Ejemplo práctico
+                        <div className="bg-black rounded-xl p-4 flex flex-col items-start">
+                            <h1 className="text-3xl md:text-4xl xl:text-5xl font-extrabold text-white mb-2 leading-tight">
+                                RIESGOS:
                             </h1>
-                            <ul className="list-disc list-inside text-gray-200 space-y-1">
-                            <li>
-                                Una inversión de $10,000 con una volatilidad de 2% diaria, al 95% de confianza, podría tener un VaR diario = $330.
-                            </li>
-                            <li>
-                               Esto significa: con un 95% de probabilidad, la pérdida máxima en un día no superará los $330
-                            </li>
-                        </ul>
+                            <p className="max-w-2xl mt-2 pl-4 font-light text-justify text-[#FFFFFF] md:text-lg lg:text-xl">
+                                <ul className=" text-[#FFFFFF] space-y-1 mt-2">
+                                    <li>
+                                        <span className="font-semibold">Riesgo de mercado:</span>
+                                        <ul className="list-disc text-[#FFFFFF] space-y-1">
+                                            <li className="pl-4">Es la posibilidad de perder dinero debido a fluctuaciones en los precios de los activos financieros (acciones, bonos, divisas, materias primas, etc.).</li>
+                                            <li className="pl-4">Ejemplo: si compras acciones de una empresa a $100 y, por una caída general en la bolsa, ahora valen $80, estás enfrentando riesgo de mercado.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span className="font-semibold">Riesgo de liquidez:</span>
+                                        <ul className="list-disc text-[#FFFFFF] space-y-1">
+                                            <li className="pl-4">Se da cuando no puedes vender un activo sin afectar su precio.</li>
+                                            <li className="pl-4">Ejemplo: si tienes un terreno en una zona poco demandada, podrías tardar meses en venderlo, incluso bajando el precio.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span className="font-semibold">Riesgo político:</span>
+                                        <ul className="list-disc text-[#FFFFFF] space-y-1">
+                                            <li className="pl-4">Se refiere a la incertidumbre causada por cambios en el entorno político o regulatorio que afectan a las inversiones.</li>
+                                            <li className="pl-4">Ejemplo: una nacionalización de empresas, un cambio brusco en las reglas de impuestos, o restricciones a la inversión extranjera.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </p>
                         </div>
                     </div>
 
 
                     {/* Preguntas ocupando toda la segunda columna */}
                     <div className="bg-[#FFFFFF] col-start-2 col-end-3 row-span-2 flex items-center justify-center rounded-xl p-4">
-                        <div className="bg-white rounded-xl shadow-2xl p-8 max-w-lg w-full">
-                            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-                                Preguntas de Autoevaluación
-                            </h2>
+                        <EvaluacionHito
+                            hito="valorRiesgo" // 👈 este será el siguiente hito a desbloquear
+                            preguntas={[
+                                {
+                                    id: "p1",
+                                    texto: "¿Qué riesgo afecta a una inversión si los precios caen repentinamente en la bolsa?",
+                                    opciones: [
+                                        "Riesgo de mercado",
+                                        "Riesgo de liquidez",
+                                        "Riesgo político",
+                                    ],
+                                    correcta: "Riesgo de mercado",
+                                },
+                                {
+                                    id: "p2",
+                                    texto: "¿Qué sucede si la inflación supera la rentabilidad de una inversión?",
+                                    opciones: [
+                                        "El poder adquisitivo disminuye",
+                                        "La inversión se vuelve más líquida",
+                                        "El riesgo de mercado aumenta",
+                                    ],
+                                    correcta: "El poder adquisitivo disminuye",
+                                },
+                                {
+                                    id: "p3",
+                                    texto: "¿Qué nivel de confianza se usa comúnmente en VaR?",
+                                    opciones: ["99%", "95%", "90%"],
+                                    correcta: "95%",
+                                },
+                                {
+                                    id: "p4",
+                                    texto: "¿En qué contextos se utiliza el VaR?",
+                                    opciones: [
+                                        "Bancos para calcular reservas de capital",
+                                        "Inversores individuales para evaluar riesgos",
+                                        "Empresas para planificar decisiones financieras",
+                                    ],
+                                    correcta: "Bancos para calcular reservas de capital",
+                                },
+                            ]}
 
-                            {/* Pregunta 1 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    1. ¿Qué riesgo afecta a una inversión si los precios caen repentinamente en la bolsa?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        Riesgo de mercado
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        Riesgo de liquidez
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        Riesgo político
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 2 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    2. ¿Qué sucede si la inflación supera la rentabilidad de una inversión?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        El poder adquisitivo disminuye ✅
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        La inversión se vuelve más líquida
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        El riesgo de mercado aumenta
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 3 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    3. ¿Qué nivel de confianza se usa comúnmente en VaR?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        99%
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        95%
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        90%
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 4 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    4. ¿En qué contextos se utiliza el VaR?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Bancos para calcular reservas de capital
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Inversores individuales para evaluar riesgos
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Empresas para planificar decisiones financieras
-                                    </label>
-                                </div>
-                            </div>
-
-                            <button className="w-full mt-4 bg-black hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg">
-                                Enviar respuestas
-                            </button>
-                        </div>
+                        />
                     </div>
                 </div>
 

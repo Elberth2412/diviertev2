@@ -1,6 +1,7 @@
 import Hitos from "./hitos";
 import imgEstadistica from "../../assets/estadistica.png";
 import Carrusel from "../../componentes/carrusel";
+import EvaluacionHito from "../../componentes/evaluacionHito";
 
 //Imagenes del carrusel:
 import car1 from "../../assets/car-1.png";
@@ -83,99 +84,51 @@ const HitoConceptosBasicos = () => {
 
                     {/* Preguntas ocupando toda la segunda columna */}
                     <div className="bg-[#FFFFFF] col-start-2 col-end-3 row-span-2 flex items-center justify-center rounded-xl p-4">
-                        <div className="bg-white rounded-xl shadow-2xl p-8 max-w-lg w-full">
-                            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-                                Preguntas de Autoevaluación
-                            </h2>
-
-                            {/* Pregunta 1 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    1. ¿Qué significa “presupuesto”?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un plan para administrar ingresos y gastos
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un ahorro fijo mensual
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        Un préstamo bancario
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 2 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    2. ¿Cuál es la diferencia entre ahorro e inversión?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        El ahorro guarda dinero, la inversión lo hace crecer
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        No hay ninguna diferencia
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        El ahorro implica más riesgo que la inversión
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 3 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    3. ¿Qué riesgos financieros pueden afectar a una persona?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        Pérdida de empleo
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        Endeudamiento excesivo
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        Inflación
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 4 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    4. ¿Por qué es importante gestionar los riesgos en las finanzas personales?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Para evitar pérdidas económicas y proteger el futuro
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Para gastar sin preocupaciones
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        No es importante, los riesgos no afectan las finanzas
-                                    </label>
-                                </div>
-                            </div>
-
-                            <button className="w-full mt-4 bg-black text-white font-medium py-2 px-4 rounded-lg hover:bg-gray-500">
-                                Enviar respuestas
-                            </button>
-                        </div>
+                        <EvaluacionHito
+                            hito="conceptosBasicos" // 👈 este será el siguiente hito a desbloquear
+                            preguntas={[
+                                {
+                                    id: "p1",
+                                    texto: "¿Qué significa 'presupuesto'?",
+                                    opciones: [
+                                        "Un plan para administrar ingresos y gastos",
+                                        "Un ahorro fijo mensual",
+                                        "Un préstamo bancario",
+                                    ],
+                                    correcta: "Un plan para administrar ingresos y gastos",
+                                },
+                                {
+                                    id: "p2",
+                                    texto: "¿Cuál es la diferencia entre ahorro e inversión?",
+                                    opciones: [
+                                        "El ahorro guarda dinero, la inversión lo hace crecer",
+                                        "No hay ninguna diferencia",
+                                        "El ahorro implica más riesgo que la inversión",
+                                    ],
+                                    correcta: "El ahorro guarda dinero, la inversión lo hace crecer",
+                                },
+                                {
+                                    id: "p3",
+                                    texto: "¿Qué riesgos financieros pueden afectar a una persona?",
+                                    opciones: [
+                                        "Pérdida de empleo",
+                                        "Endeudamiento excesivo",
+                                        "Inflación",
+                                    ],
+                                    correcta: "Pérdida de empleo", // 👈 aquí puedes decidir si aceptas varias correctas (luego ajustamos)
+                                },
+                                {
+                                    id: "p4",
+                                    texto: "¿Por qué es importante gestionar los riesgos en las finanzas personales?",
+                                    opciones: [
+                                        "Para evitar pérdidas económicas y proteger el futuro",
+                                        "Para gastar sin preocupaciones",
+                                        "No es importante, los riesgos no afectan las finanzas",
+                                    ],
+                                    correcta: "Para evitar pérdidas económicas y proteger el futuro",
+                                },
+                            ]}
+                        />
                     </div>
                 </div>
 
