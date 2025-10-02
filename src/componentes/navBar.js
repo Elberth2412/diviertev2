@@ -20,7 +20,7 @@ const Navbar = () => {
                 nombre: user.displayName,
                 correo: user.email,
                 creado: new Date(),
-                progreso: 0, // ejemplo
+                progreso: 0, // al comienzo
             });
             console.log("Usuario nuevo guardado en Firestore");
         } else {
@@ -59,7 +59,7 @@ const Navbar = () => {
                     </Link>
                     {   usuario ?
                         (
-                            <div className="flex items-center space-x-6 rtl:space-x-reverse">
+                            <div className="flex items-center space-x-6 rtl:space-x-reverse">   
                                 <p className="text-sm  text-gray-500 dark:text-white">
                                     {(usuario.displayName).toUpperCase()}
                                 </p>

@@ -1,0 +1,160 @@
+import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import fetchPrices from "../../services/financeApi";
+import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
+
+const Simulador = () => {
+    const [ticker, setTicker] = useState("");
+    const [prices, setPrices] = useState([]);
+    const [inversion, setInversion] = useState("");
+    const [horizonte, setHorizonte] = useState(5);   // nuevo
+    const [confianza, setConfianza] = useState(95);  // nuevo
+    const [varResult, setVarResult] = useState(null);
+
+    const handleBuscar = async () => {
+        if (!ticker) return;
+        try {
+            const data = await fetchPrices(ticker);
+            setPrices(data);
+        } catch (err) {
+            console.error("Error al obtener precios:", err);
+        }
+    };
+
+    const handleCalcularVaR = () => {
+        if (prices.length < 2) {
+            alert("Necesitas al menos 2 precios para calcular rendimientos");
+            return;
+        }
+
+        // rendimientos diarios
+        const rendimientos = [];
+        for (let i = 1; i < prices.length; i++) {
+            const r = (prices[i].close / prices[i - 1].close) - 1;
+            rendimientos.push(r);
+        }
+
+        // ordenar
+        const sorted = [...rendimientos].sort((a, b) => a - b);
+
+        // percentil según confianza
+        const nivel = (100 - confianza) / 100; // ej: 0.05 para 95%
+        const idx = Math.floor(sorted.length * nivel);
+        const varDiario = sorted[idx];
+
+        // ajustar al horizonte temporal
+        const varHorizonte = varDiario * Math.sqrt(horizonte);
+
+        // pérdida en monto
+        const monto = parseFloat(inversion) || 0;
+        const perdida = monto * varHorizonte;
+
+        setVarResult({ varDiario, varHorizonte, perdida });
+    };
+
+    return (
+        <div className="bg-gray-500 m-4 p-4 rounded-xl text-[#FFFFFF]">
+            <div className="bg-black p-4 rounded-xl">
+                <h1 className="text-xl font-bold mb-4 text-[#FFFFFF]">Simulación VaR</h1>
+
+                {/* Ticker */}
+                <div className="mb-4">
+                    <label className="block mb-2">Ticker de empresa</label>
+                    <input
+                        type="text"
+                        value={ticker}
+                        onChange={(e) => setTicker(e.target.value.toUpperCase())}
+                        className="border p-2 rounded text-[#000000]"
+                    />
+                    <button onClick={handleBuscar} className="ml-2 px-4 py-2 bg-blue-600 text-white rounded">
+                        Buscar precios
+                    </button>
+                </div>
+
+                {/* Gráfico */}
+                {prices.length > 0 && (
+                    <div className="mb-6 h-64">
+                        <ResponsiveContainer width="100%" height="100%">
+                            <LineChart data={prices}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="date" />
+                                <YAxis />
+                                <Tooltip />
+                                <Line type="monotone" dataKey="close" stroke="#2563eb" />
+                            </LineChart>
+                        </ResponsiveContainer>
+                    </div>
+                )}
+
+                {/* Inversión */}
+                <div className="mb-4">
+                    <label className="block mb-2">Inversión ($)</label>
+                    <input
+                        type="number"
+                        value={inversion}
+                        onChange={(e) => setInversion(e.target.value)}
+                        className="border p-2 rounded text-[#000000]"
+                    />
+                </div>
+
+                {/* Horizonte */}
+                <div className="mb-4">
+                    <label className="block mb-2">Horizonte temporal</label>
+                    <select
+                        value={horizonte}
+                        onChange={(e) => setHorizonte(Number(e.target.value))}
+                        className="border p-2 rounded text-[#000000]"
+                    >
+                        <option value={1}>1 día</option>
+                        <option value={5}>5 días</option>
+                        <option value={10}>10 días</option>
+                    </select>
+                </div>
+
+                {/* Confianza */}
+                <div className="mb-4">
+                    <label className="block mb-2">Nivel de confianza</label>
+                    <select
+                        value={confianza}
+                        onChange={(e) => setConfianza(Number(e.target.value))}
+                        className="border p-2 rounded text-[#000000]"
+                    >
+                        <option value={90}>90%</option>
+                        <option value={95}>95%</option>
+                        <option value={99}>99%</option>
+                    </select>
+                </div>
+
+                {/* Botón calcular */}
+                <button
+                    onClick={handleCalcularVaR}
+                    className="px-4 py-2 bg-green-600 text-white rounded"
+                >
+                    Calcular VaR
+                </button>
+
+                {/* Resultados */}
+                {varResult && (
+                    <div className="mt-4 p-4 bg-gray-100 rounded text-black">
+                        <p>VaR diario ({confianza}%): {(varResult.varDiario * 100).toFixed(2)}%</p>
+                        <p>VaR a {horizonte} días: {(varResult.varHorizonte * 100).toFixed(2)}%</p>
+                        <p>Pérdida máxima esperada en monto: ${Math.abs(varResult.perdida).toFixed(2)}</p>
+                        <hr className="my-2" />
+                        <p>
+                            👉 El VaR indica la pérdida máxima esperada con {confianza}% de confianza
+                            en un horizonte de {horizonte} día(s).
+                        </p>
+                        <p className="text-sm text-gray-600 mt-2">
+                            📌 Recordatorios:<br />
+                            - El VaR mide pérdidas, no ganancias.<br />
+                            - No garantiza el 100% de certeza (siempre hay un {100 - confianza}% de probabilidad de pérdidas mayores).<br />
+                            - El VaR no explica las causas de la pérdida, solo cuantifica el riesgo bajo condiciones normales de mercado.
+                        </p>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
+
+export default Simulador;

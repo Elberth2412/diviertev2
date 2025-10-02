@@ -4,8 +4,8 @@ import PrivateRoute from "./componentes/privateRouter";
 
 import Navbar from "./componentes/navBar";
 import Hitos from "./modulos/hitos/hitos";
-import Simulador from "./componentes/simulador";
-import Estadisticas from "./componentes/estadisticas";
+import Simulador from "./modulos/simulador/simulador.js";
+import Estadisticas from "./modulos/estadisticas/estadisticas.js";
 import Home from "./home/home";
 import Footer from "./componentes/footer";
 import Login from "./login/login";
@@ -51,7 +51,6 @@ function App() {
             <Route path="/hitos/VarSimulacion" element={<PrivateRoute> <HitoVarSimulacion/> </PrivateRoute>} />
             <Route path="/hitos/VarPortafolios" element={<PrivateRoute> <HitoVarPortafolios/> </PrivateRoute>} />
             <Route path="/hitos/VarInterpretacion" element={<PrivateRoute> <HitoVarInterpretacion/> </PrivateRoute>} />
-
 
           </Routes>
 

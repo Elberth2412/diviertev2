@@ -1,4 +1,4 @@
-import CardInicio from "../componentes/card";
+import CardInicio from "../componentes/cardInicio";
 import "../elementos/card.css"
 
 const Home = () => {
