@@ -59,20 +59,22 @@ const Simulador = () => {
                 </h1>
 
                 {/* Ticker */}
-                <div className="grid grid-cols-2 grid-rows-[auto auto] gap-8 mb-4">
-                    <p className="max-w-[300px] ml-auto text-justify items-center border border-colapse p-4 rounded-xl">1. Ingrese el símbolo de la empresa para generar el grafico (por ejemplo: AAPL para Apple o NVDA para Nvidia).</p>
-                    <div className="flex flex-col justify-center items-center mr-auto min-w-[200px]">
+                <div className="grid grid-cols-2 gap-4 mb-4 bg-gray-500 w-fit ml-auto mr-auto p-4 rounded-xl">
+                    <p className="max-w-[290px] text-justify border border-colapse p-4 rounded-xl">1. Ingrese el símbolo de la empresa para generar el grafico (por ejemplo: AAPL para Apple o NVDA para Nvidia).</p>
+                    <div className="flex flex-col items-center w-full">
                         <label className="block mb-1">SIMBOLO BURSÁTIL</label>
                         <input
                             type="text"
                             value={ticker}
                             onChange={(e) => setTicker(e.target.value.toUpperCase())}
-                            className="border p-1 text-center rounded text-[#000000] mb-1 w-full"
+                            className="border p-1 text-center rounded text-[#000000] mb-1 w-full "
+                            placeholder="Ejm: NVDA"
                         />
-                        <button onClick={handleBuscar} className="p-1 bg-[#FFFFFF] text-black rounded w-full hover:bg-gray-500 hover:text-white">
+                        <button onClick={handleBuscar} className="p-1 bg-[#FFFFFF] text-black rounded w-full hover:bg-black hover:text-white hover:scale-105">
                             Generar Grafico
                         </button>
                     </div>
+
                 </div>
 
                 {/* Gráfico */}
@@ -90,81 +92,91 @@ const Simulador = () => {
                     </div>
                 )}
 
-                {/* Inversión */}
-                <div className="grid grid-cols-2 grid-rows-[auto auto] gap-8 mb-4">
-                    <p className="max-w-[300px] ml-auto text-justify items-center border border-colapse p-4 rounded-xl">2. Digite el monto de inversión en dólares.</p>
-                    <div className="flex flex-col justify-center items-center mr-auto min-w-[200px]">
-                        <label className="block mb-1">Inversión ($)</label>
-                        <input
-                            type="number"
-                            value={inversion}
-                            onChange={(e) => setInversion(e.target.value)}
-                            className="border p-1 rounded text-[#000000] text-center w-full"
-                        />
+                <div className="grid grid-cols-2 bg-black p-4 w-fit ml-auto mr-auto">
+                    <div>
+                        {/* Inversión */}
+                        <div className="grid grid-cols-2 bg-gray-500 rounded-xl gap-4 mb-4 w-fit ml-auto mr-auto p-4">
+                            <p className="max-w-[290px] text-justify border border-colapse p-4 rounded-xl">2. Digite el monto de inversión en dólares.</p>
+                            <div className="flex flex-col items-center w-full">
+                                <label className="block mb-1">Inversión ($)</label>
+                                <input
+                                    type="number"
+                                    value={inversion}
+                                    onChange={(e) => setInversion(e.target.value)}
+                                    className="border p-1 rounded text-[#000000] text-center w-full"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Horizonte */}
+                        <div className="grid grid-cols-2 bg-gray-500 rounded-xl p-4 gap-4 mb-4 w-fit ml-auto mr-auto">
+                            <p className="max-w-[290px] text-justify border border-colapse p-4 rounded-xl">3. Seleccione el horizonte temporal (en días).</p>
+                            <div className="flex flex-col w-full items-center">
+                                <label className="block mb-2">Horizonte temporal</label>
+                                <select
+                                    value={horizonte}
+                                    onChange={(e) => setHorizonte(Number(e.target.value))}
+                                    className="border p-1 rounded text-[#000000] w-full text-center cursor-pointer"
+                                >
+                                    <option value={1}>1 día</option>
+                                    <option value={5}>5 días</option>
+                                    <option value={10}>10 días</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        {/* Confianza */}
+                        <div className="grid grid-cols-2 gap-4 mb-4 bg-gray-500 w-fit ml-auto mr-auto p-4 rounded-xl">
+                            <p className="max-w-[290px] text-justify border border-colapse p-4 rounded-xl">4. Elija el nivel de confianza para el cálculo del VaR.</p>
+
+                            <div className="flex flex-col ">
+                                <label className="block mb-2">Nivel de confianza</label>
+                                <select
+                                    value={confianza}
+                                    onChange={(e) => setConfianza(Number(e.target.value))}
+                                    className="border p-1 rounded text-[#000000] w-full text-center cursor-pointer"
+                                >
+                                    <option value={90}>90%</option>
+                                    <option value={95}>95%</option>
+                                    <option value={99}>99%</option>
+                                </select>
+                            </div>
+
+                            {/* Botón calcular */}
+                            <button
+                                onClick={handleCalcularVaR}
+                                className="col-span-2 p-1 bg-[#FFFFFF] text-[#000000] rounded-xl w-full hover:bg-black hover:text-white"
+                            >
+                                Calcular VaR
+                            </button>
+                        </div>
+                    </div>
+                    <div className="mb-auto mt-auto">
+                        {/* Resultados */}
+                        {varResult && (
+                            <div className="p-4 bg-gray-100 rounded-xl text-black">
+                                <p>VaR diario ({confianza}%): {(varResult.varDiario * 100).toFixed(2)}%</p>
+                                <p>VaR a {horizonte} días: {(varResult.varHorizonte * 100).toFixed(2)}%</p>
+                                <p>Pérdida máxima esperada en monto: ${Math.abs(varResult.perdida).toFixed(2)}</p>
+                                <hr className="my-2" />
+                                <p>
+                                    👉 El VaR indica la pérdida máxima esperada con {confianza}% de confianza
+                                    en un horizonte de {horizonte} día(s).
+                                </p>
+                                <p className="text-sm text-gray-600 mt-2">
+                                    📌 Recordatorios:<br />
+                                    - El VaR mide pérdidas, no ganancias.<br />
+                                    - No garantiza el 100% de certeza (siempre hay un {100 - confianza}% de probabilidad de pérdidas mayores).<br />
+                                    - El VaR no explica las causas de la pérdida, solo cuantifica el riesgo bajo condiciones normales de mercado.
+                                </p>
+                            </div>
+                        )}
                     </div>
                 </div>
 
-                {/* Horizonte */}
-                <div className="grid grid-cols-2 grid-rows-[auto auto] gap-8 mb-4">
-                    <p className="max-w-[300px] ml-auto text-justify items-center border border-colapse p-4 rounded-xl">3. Seleccione el horizonte temporal (en días).</p>
-                    <div className="flex flex-col justify-center items-center mr-auto min-w-[200px]">
-                        <label className="block mb-2">Horizonte temporal</label>
-                        <select
-                            value={horizonte}
-                            onChange={(e) => setHorizonte(Number(e.target.value))}
-                            className="border p-1 rounded text-[#000000] w-full text-center"
-                        >
-                            <option value={1}>1 día</option>
-                            <option value={5}>5 días</option>
-                            <option value={10}>10 días</option>
-                        </select>
-                    </div>
-                </div>
 
-                {/* Confianza */}
-                <div className="grid grid-cols-2 grid-rows-[auto auto] gap-8 mb-4">
-                    <p className="max-w-[300px] ml-auto text-justify items-center border border-colapse p-4 rounded-xl">4. Elija el nivel de confianza para el cálculo del VaR.</p>
-                    <div className="flex flex-col justify-center items-center mr-auto min-w-[200px]">
-                        <label className="block mb-2">Nivel de confianza</label>
-                        <select
-                            value={confianza}
-                            onChange={(e) => setConfianza(Number(e.target.value))}
-                            className="border p-1 rounded text-[#000000] w-full text-center"
-                        >
-                            <option value={90}>90%</option>
-                            <option value={95}>95%</option>
-                            <option value={99}>99%</option>
-                        </select>
-                    </div>
-                </div>
 
-                {/* Botón calcular */}
-                <button
-                    onClick={handleCalcularVaR}
-                    className="px-4 py-2 bg-green-600 text-white rounded"
-                >
-                    Calcular VaR
-                </button>
 
-                {/* Resultados */}
-                {varResult && (
-                    <div className="mt-4 p-4 bg-gray-100 rounded-xl text-black ">
-                        <p>VaR diario ({confianza}%): {(varResult.varDiario * 100).toFixed(2)}%</p>
-                        <p>VaR a {horizonte} días: {(varResult.varHorizonte * 100).toFixed(2)}%</p>
-                        <p>Pérdida máxima esperada en monto: ${Math.abs(varResult.perdida).toFixed(2)}</p>
-                        <hr className="my-2" />
-                        <p>
-                            👉 El VaR indica la pérdida máxima esperada con {confianza}% de confianza
-                            en un horizonte de {horizonte} día(s).
-                        </p>
-                        <p className="text-sm text-gray-600 mt-2">
-                            📌 Recordatorios:<br />
-                            - El VaR mide pérdidas, no ganancias.<br />
-                            - No garantiza el 100% de certeza (siempre hay un {100 - confianza}% de probabilidad de pérdidas mayores).<br />
-                            - El VaR no explica las causas de la pérdida, solo cuantifica el riesgo bajo condiciones normales de mercado.
-                        </p>
-                    </div>
-                )}
             </div>
         </div>
     );
