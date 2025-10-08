@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import fetchPrices from "../../services/financeApi";
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../firebase/config";
+import { useAuth } from "../../services/AuthContext";
+
 const Simulador = () => {
     const [ticker, setTicker] = useState("");
     const [prices, setPrices] = useState([]);
@@ -9,6 +13,7 @@ const Simulador = () => {
     const [horizonte, setHorizonte] = useState(5);   // nuevo
     const [confianza, setConfianza] = useState(95);  // nuevo
     const [varResult, setVarResult] = useState(null);
+    const { usuario } = useAuth();
 
     const handleBuscar = async () => {
         if (!ticker) return;
@@ -20,7 +25,8 @@ const Simulador = () => {
         }
     };
 
-    const handleCalcularVaR = () => {
+
+    const handleCalcularVaR = async () => {
         if (prices.length < 2) {
             alert("Necesitas al menos 2 precios para calcular rendimientos");
             return;
@@ -49,7 +55,27 @@ const Simulador = () => {
         const perdida = monto * varHorizonte;
 
         setVarResult({ varDiario, varHorizonte, perdida });
+
+        // 🔹 Guardar la simulación en Firestore
+        if (usuario) {
+            try {
+                const ref = collection(db, "usuarios", usuario.uid, "simulaciones");
+                await addDoc(ref, {
+                    ticker,
+                    nivelConfianza: confianza,
+                    inversion: monto,
+                    varDiario,
+                    varHorizonte,
+                    perdida,
+                    fecha: new Date(),
+                });
+                console.log("✅ Simulación guardada en Firestore");
+            } catch (error) {
+                console.error("Error al guardar simulación:", error);
+            }
+        }
     };
+
 
     return (
         <div className="bg-gray-500 m-4 p-4 rounded-xl text-[#FFFFFF]">
@@ -70,7 +96,7 @@ const Simulador = () => {
                             className="border p-1 text-center rounded text-[#000000] mb-1 w-full "
                             placeholder="Ejm: NVDA"
                         />
-                        <button onClick={handleBuscar} className="p-1 bg-[#FFFFFF] text-black rounded w-full hover:bg-black hover:text-white hover:scale-105">
+                        <button onClick={handleBuscar} className="p-1 bg-[#FFFFFF] text-black rounded w-full hover:bg-black hover:text-white duration-500 hover:scale-105">
                             Generar Grafico
                         </button>
                     </div>
@@ -81,7 +107,7 @@ const Simulador = () => {
                 {prices.length > 0 && (
                     <div className="mb-4 h-64 bg-white p-4 rounded-xl">
                         <ResponsiveContainer width="100%" height="100%">
-                            <LineChart data={prices}>
+                            <LineChart data={prices} margin={{ top: 20, right: 30, left: -20, bottom: 5 }}>
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis dataKey="date" />
                                 <YAxis />
@@ -92,11 +118,16 @@ const Simulador = () => {
                     </div>
                 )}
 
-                <div className="grid grid-cols-2 bg-black p-4 w-fit ml-auto mr-auto">
+                <div
+                    className={`grid bg-black p-4 w-fit mx-auto transition-all duration-500 
+    ${varResult ? "grid-cols-2" : "grid-cols-1"}`}
+                >
                     <div>
                         {/* Inversión */}
-                        <div className="grid grid-cols-2 bg-gray-500 rounded-xl gap-4 mb-4 w-fit ml-auto mr-auto p-4">
-                            <p className="max-w-[290px] text-justify border border-colapse p-4 rounded-xl">2. Digite el monto de inversión en dólares.</p>
+                        <div className="grid grid-cols-2 bg-gray-500 rounded-xl gap-4 mb-4 w-fit mx-auto p-4">
+                            <p className="max-w-[290px] text-justify border border-colapse p-4 rounded-xl">
+                                2. Digite el monto de inversión en dólares.
+                            </p>
                             <div className="flex flex-col items-center w-full">
                                 <label className="block mb-1">Inversión ($)</label>
                                 <input
@@ -109,8 +140,10 @@ const Simulador = () => {
                         </div>
 
                         {/* Horizonte */}
-                        <div className="grid grid-cols-2 bg-gray-500 rounded-xl p-4 gap-4 mb-4 w-fit ml-auto mr-auto">
-                            <p className="max-w-[290px] text-justify border border-colapse p-4 rounded-xl">3. Seleccione el horizonte temporal (en días).</p>
+                        <div className="grid grid-cols-2 bg-gray-500 rounded-xl p-4 gap-4 mb-4 w-fit mx-auto">
+                            <p className="max-w-[290px] text-justify border border-colapse p-4 rounded-xl">
+                                3. Seleccione el horizonte temporal (en días).
+                            </p>
                             <div className="flex flex-col w-full items-center">
                                 <label className="block mb-2">Horizonte temporal</label>
                                 <select
@@ -126,10 +159,11 @@ const Simulador = () => {
                         </div>
 
                         {/* Confianza */}
-                        <div className="grid grid-cols-2 gap-4 mb-4 bg-gray-500 w-fit ml-auto mr-auto p-4 rounded-xl">
-                            <p className="max-w-[290px] text-justify border border-colapse p-4 rounded-xl">4. Elija el nivel de confianza para el cálculo del VaR.</p>
-
-                            <div className="flex flex-col ">
+                        <div className="grid grid-cols-2 gap-4 mb-4 bg-gray-500 w-fit mx-auto p-4 rounded-xl">
+                            <p className="max-w-[290px] text-justify border border-colapse p-4 rounded-xl">
+                                4. Elija el nivel de confianza para el cálculo del VaR.
+                            </p>
+                            <div className="flex flex-col">
                                 <label className="block mb-2">Nivel de confianza</label>
                                 <select
                                     value={confianza}
@@ -151,31 +185,27 @@ const Simulador = () => {
                             </button>
                         </div>
                     </div>
-                    <div className="mb-auto mt-auto">
-                        {/* Resultados */}
-                        {varResult && (
-                            <div className="p-4 bg-gray-100 rounded-xl text-black">
-                                <p>VaR diario ({confianza}%): {(varResult.varDiario * 100).toFixed(2)}%</p>
-                                <p>VaR a {horizonte} días: {(varResult.varHorizonte * 100).toFixed(2)}%</p>
-                                <p>Pérdida máxima esperada en monto: ${Math.abs(varResult.perdida).toFixed(2)}</p>
-                                <hr className="my-2" />
-                                <p>
-                                    👉 El VaR indica la pérdida máxima esperada con {confianza}% de confianza
-                                    en un horizonte de {horizonte} día(s).
-                                </p>
-                                <p className="text-sm text-gray-600 mt-2">
-                                    📌 Recordatorios:<br />
-                                    - El VaR mide pérdidas, no ganancias.<br />
-                                    - No garantiza el 100% de certeza (siempre hay un {100 - confianza}% de probabilidad de pérdidas mayores).<br />
-                                    - El VaR no explica las causas de la pérdida, solo cuantifica el riesgo bajo condiciones normales de mercado.
-                                </p>
-                            </div>
-                        )}
-                    </div>
+
+                    {/* Resultados */}
+                    {varResult && (
+                        <div className="mb-auto mt-auto p-4 bg-gray-100 rounded-xl text-black">
+                            <p>VaR diario ({confianza}%): {(varResult.varDiario * 100).toFixed(2)}%</p>
+                            <p>VaR a {horizonte} días: {(varResult.varHorizonte * 100).toFixed(2)}%</p>
+                            <p>Pérdida máxima esperada en monto: ${Math.abs(varResult.perdida).toFixed(2)}</p>
+                            <hr className="my-2" />
+                            <p>
+                                👉 El VaR indica la pérdida máxima esperada con {confianza}% de confianza
+                                en un horizonte de {horizonte} día(s).
+                            </p>
+                            <p className="text-sm text-gray-600 mt-2">
+                                📌 Recordatorios:<br />
+                                - El VaR mide pérdidas, no ganancias.<br />
+                                - No garantiza el 100% de certeza (siempre hay un {100 - confianza}% de probabilidad de pérdidas mayores).<br />
+                                - El VaR no explica las causas de la pérdida, solo cuantifica el riesgo bajo condiciones normales de mercado.
+                            </p>
+                        </div>
+                    )}
                 </div>
-
-
-
 
             </div>
         </div>

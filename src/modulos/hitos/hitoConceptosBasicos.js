@@ -2,6 +2,7 @@ import Hitos from "./hitos";
 import imgEstadistica from "../../assets/estadistica.png";
 import Carrusel from "../../componentes/carrusel";
 import EvaluacionHito from "../../componentes/evaluacionHito";
+import useSmoothScroll from "../../hooks/useSmoothScroll";
 
 //Imagenes del carrusel:
 import car1 from "../../assets/car-1.png";
@@ -11,6 +12,8 @@ import car4 from "../../assets/car-4.png";
 import car5 from "../../assets/car-5.png";
 
 const HitoConceptosBasicos = () => {
+
+    useSmoothScroll("contenido", 1100);
 
     let slides = [
         car1,
@@ -23,7 +26,7 @@ const HitoConceptosBasicos = () => {
     return (
         <div>
             <Hitos />
-            <div className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
+            <div id="contenido" className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
 
                 <section className="bg-black rounded-xl">
                     <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 items-center items-center">
@@ -85,7 +88,7 @@ const HitoConceptosBasicos = () => {
                     {/* Preguntas ocupando toda la segunda columna */}
                     <div className="bg-[#FFFFFF] col-start-2 col-end-3 row-span-2 flex items-center justify-center rounded-xl p-4">
                         <EvaluacionHito
-                            hito="conceptosBasicos" // 👈 este será el siguiente hito a desbloquear
+                            hito="conceptosBasicos"
                             preguntas={[
                                 {
                                     id: "p1",

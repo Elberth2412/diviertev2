@@ -2,12 +2,19 @@ import Hitos from "./hitos";
 import Carrusel from "../../componentes/carrusel";
 import SimuladorPortafolio from "../../componentes/simuladorPortafolio";
 
+import EvaluacionHito from "../../componentes/evaluacionHito";
+
+//hook de desplazamiento:
+import useSmoothScroll from "../../hooks/useSmoothScroll";
+
 //Imagenes del carrusel:
 import car16 from "../../assets/car-16.jpg";
 import car17 from "../../assets/car-17.jpg";
 import car18 from "../../assets/car-18.jpg";
 
 const HitoVarPortafolios = () => {
+
+    useSmoothScroll("contenido", 1100);
 
     const slides = [
         car16,
@@ -18,7 +25,7 @@ const HitoVarPortafolios = () => {
     return (
         <div>
             <Hitos />
-            <div className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
+            <div id="contenido" className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
 
                 <section className="bg-black rounded-xl">
                     <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 items-center">
@@ -120,99 +127,52 @@ const HitoVarPortafolios = () => {
 
                     {/* Preguntas ocupando toda la segunda columna */}
                     <div className="bg-[#FFFFFF] col-start-2 col-end-3 row-span-2 flex items-center justify-center rounded-xl h-auto p-4">
-                        <div className="bg-white rounded-xl shadow-2xl p-8 max-w-lg w-full">
-                            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-                                Preguntas de Autoevaluación
-                            </h2>
+                        <EvaluacionHito
+                            hito="varPortafolios"
+                            preguntas={[
+                                {
+                                    id: "p1",
+                                    texto: "¿Qué portafolio tiene menor riesgo de pérdida según el VaR?",
+                                    opciones: [
+                                        "Conservador",
+                                        "Balanceado",
+                                        "Agresivo"
+                                    ],
+                                    correcta: "Conservador"
+                                },
+                                {
+                                    id: "p2",
+                                    texto: "¿Por qué el portafolio diversificado (balanceado) ofrece un equilibrio entre riesgo y rendimiento?",
+                                    opciones: [
+                                        "Porque combina activos de bajo y alto riesgo, reduciendo la volatilidad total",
+                                        "Porque siempre garantiza ganancias seguras",
+                                        "Porque depende solo de un activo"
+                                    ],
+                                    correcta: "Porque combina activos de bajo y alto riesgo, reduciendo la volatilidad total"
+                                },
+                                {
+                                    id: "p3",
+                                    texto: "¿Cómo cambia el VaR al aumentar el peso de activos de riesgo?",
+                                    opciones: [
+                                        "Aumenta, indicando mayor posible pérdida",
+                                        "Se mantiene igual, sin importar los pesos",
+                                        "Disminuye, porque más riesgo siempre es mejor"
+                                    ],
+                                    correcta: "Aumenta, indicando mayor posible pérdida"
+                                },
+                                {
+                                    id: "p4",
+                                    texto: "¿Qué significa que el VaR de un portafolio agresivo sea más alto que el de uno conservador?",
+                                    opciones: [
+                                        "Que el portafolio agresivo tiene mayor probabilidad de pérdidas extremas",
+                                        "Que el portafolio agresivo siempre gana más dinero",
+                                        "Que el portafolio conservador no tiene riesgos en absoluto"
+                                    ],
+                                    correcta: "Que el portafolio agresivo tiene mayor probabilidad de pérdidas extremas"
+                                }
+                            ]}
+                        />
 
-                            {/* Pregunta 1 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    1. ¿Qué portafolio tiene menor riesgo de pérdida según el VaR?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        Conservador ✅
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        Balanceado
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        Agresivo
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 2 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    2. ¿Por qué el portafolio diversificado (balanceado) ofrece un equilibrio entre riesgo y rendimiento?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        Porque combina activos de bajo y alto riesgo, reduciendo la volatilidad total ✅
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        Porque siempre garantiza ganancias seguras
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        Porque depende solo de un activo
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 3 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    3. ¿Cómo cambia el VaR al aumentar el peso de activos de riesgo?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        Aumenta, indicando mayor posible pérdida ✅
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        Se mantiene igual, sin importar los pesos
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        Disminuye, porque más riesgo siempre es mejor
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 4 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    4. ¿Qué significa que el VaR de un portafolio agresivo sea más alto que el de uno conservador?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Que el portafolio agresivo tiene mayor probabilidad de pérdidas extremas ✅
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Que el portafolio agresivo siempre gana más dinero
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Que el portafolio conservador no tiene riesgos en absoluto
-                                    </label>
-                                </div>
-                            </div>
-
-                            <button className="w-full mt-4 bg-black hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg">
-                                Enviar respuestas
-                            </button>
-                        </div>
                     </div>
                 </div>
 

@@ -1,5 +1,9 @@
 import Hitos from "./hitos";
 import Carrusel from "../../componentes/carrusel";
+import EvaluacionHito from "../../componentes/evaluacionHito";
+
+//hook de desplazamiento:
+import useSmoothScroll from "../../hooks/useSmoothScroll";
 
 //Imagenes del carrusel:
 import car9 from "../../assets/car-9.jpg";
@@ -9,6 +13,8 @@ import car12 from "../../assets/car-12.jpg";
 import car13 from "../../assets/car-13.jpg";
 
 const HitoFactoresRiesgo = () => {
+
+    useSmoothScroll("contenido", 1100);
 
     const slides = [
         car9,
@@ -21,7 +27,7 @@ const HitoFactoresRiesgo = () => {
     return (
         <div>
             <Hitos />
-            <div className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
+            <div id="contenido" className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
 
                 <section className="bg-black rounded-xl">
                     <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 items-center">
@@ -70,99 +76,51 @@ const HitoFactoresRiesgo = () => {
 
                     {/* Preguntas ocupando toda la segunda columna */}
                     <div className="bg-[#FFFFFF] col-start-2 col-end-3 row-span-2 flex items-center justify-center rounded-xl p-4">
-                        <div className="bg-white rounded-xl shadow-2xl p-8 max-w-lg w-full">
-                            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-                                Preguntas de Autoevaluación
-                            </h2>
-
-                            {/* Pregunta 1 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    1. ¿Qué riesgo afecta a una inversión si los precios caen repentinamente en la bolsa?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        Riesgo de mercado
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        Riesgo de liquidez
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        Riesgo político
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 2 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    2. ¿Qué sucede si la inflación supera la rentabilidad de una inversión?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        El poder adquisitivo disminuye ✅
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        La inversión se vuelve más líquida
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        El riesgo de mercado aumenta
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 3 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    3. ¿Qué tipo de riesgo se presenta si un activo no se puede vender fácilmente?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        Riesgo de crédito
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        Riesgo de liquidez ✅
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        Riesgo de inflación
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 4 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    4. ¿Qué riesgo afecta a los inversionistas cuando un gobierno cambia sus políticas económicas o regulatorias?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Riesgo político/regulatorio ✅
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Riesgo de inflación
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Riesgo de mercado
-                                    </label>
-                                </div>
-                            </div>
-
-                            <button className="w-full mt-4 bg-black hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg">
-                                Enviar respuestas
-                            </button>
-                        </div>
+                        <EvaluacionHito
+                            hito="factoresRiesgo"
+                            preguntas={[
+                                {
+                                    id: "p1",
+                                    texto: "¿Qué riesgo afecta a una inversión si los precios caen repentinamente en la bolsa?",
+                                    opciones: [
+                                        "Riesgo de mercado",
+                                        "Riesgo de liquidez",
+                                        "Riesgo político"
+                                    ],
+                                    correcta: "Riesgo de mercado"
+                                },
+                                {
+                                    id: "p2",
+                                    texto: "¿Qué sucede si la inflación supera la rentabilidad de una inversión?",
+                                    opciones: [
+                                        "El poder adquisitivo disminuye",
+                                        "La inversión se vuelve más líquida",
+                                        "El riesgo de mercado aumenta"
+                                    ],
+                                    correcta: "El poder adquisitivo disminuye"
+                                },
+                                {
+                                    id: "p3",
+                                    texto: "¿Qué tipo de riesgo se presenta si un activo no se puede vender fácilmente?",
+                                    opciones: [
+                                        "Riesgo de crédito",
+                                        "Riesgo de liquidez",
+                                        "Riesgo de inflación"
+                                    ],
+                                    correcta: "Riesgo de liquidez"
+                                },
+                                {
+                                    id: "p4",
+                                    texto: "¿Qué riesgo afecta a los inversionistas cuando un gobierno cambia sus políticas económicas o regulatorias?",
+                                    opciones: [
+                                        "Riesgo político/regulatorio",
+                                        "Riesgo de inflación",
+                                        "Riesgo de mercado"
+                                    ],
+                                    correcta: "Riesgo político/regulatorio"
+                                }
+                            ]}
+                        />
                     </div>
                 </div>
 

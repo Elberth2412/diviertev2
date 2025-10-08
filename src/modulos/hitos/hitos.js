@@ -54,7 +54,7 @@ const Hitos = () => {
                 <NavLink
                     to="/hitos/ConceptosBasicos"
                     className={({ isActive }) =>
-                        `shadow-2xl row-start-2 row-end-3 col-start-1 col-end-2 rounded-xl grid place-items-center hover:scale-105 duration-300 
+                        `shadow-xl row-start-2 row-end-3 col-start-1 col-end-2 rounded-xl grid place-items-center hover:shadow-2xl hover:scale-105 duration-300 
             ${isActive ? "bg-black text-white" : "bg-white"}`
                     }
                 >
@@ -64,7 +64,7 @@ const Hitos = () => {
                 <NavLink
                     to="/hitos/ValorRiesgo"
                     className={({ isActive }) =>
-                        `shadow-2xl row-start-4 row-end-5 col-start-1 col-end-2 rounded-xl grid place-items-center hover:scale-105 duration-300 
+                        `shadow-xl row-start-4 row-end-5 col-start-1 col-end-2 rounded-xl grid place-items-center hover:shadow-2xl hover:scale-105 duration-300 
             ${isActive ? "bg-black text-white" : "bg-white"} ${bloqueado(
                             "valorRiesgo"
                         )}`
@@ -76,7 +76,7 @@ const Hitos = () => {
                 <NavLink
                     to="/hitos/FactoresRiesgo"
                     className={({ isActive }) =>
-                        `shadow-2xl row-start-3 row-end-4 col-start-2 col-end-3 rounded-xl grid place-items-center hover:scale-105 duration-300 
+                        `shadow-xl row-start-3 row-end-4 col-start-2 col-end-3 rounded-xl grid place-items-center hover:shadow-2xl hover:scale-105 duration-300 
             ${isActive ? "bg-black text-white" : "bg-white"} ${bloqueado(
                             "factoresRiesgo"
                         )}`
@@ -88,7 +88,7 @@ const Hitos = () => {
                 <NavLink
                     to="/hitos/EstadisticasBasicas"
                     className={({ isActive }) =>
-                        `shadow-2xl row-start-1 row-end-2 col-start-3 col-end-4 rounded-xl grid place-items-center hover:scale-105 duration-300 
+                        `shadow-xl row-start-1 row-end-2 col-start-3 col-end-4 rounded-xl grid place-items-center hover:shadow-2xl hover:scale-105 duration-300 
             ${isActive ? "bg-black text-white" : "bg-white"} ${bloqueado(
                             "estadisticasBasicas"
                         )}`
@@ -100,7 +100,7 @@ const Hitos = () => {
                 <NavLink
                     to="/hitos/RendimientoHistorico"
                     className={({ isActive }) =>
-                        `shadow-2xl row-start-3 row-end-4 col-start-3 col-end-4 rounded-xl grid place-items-center hover:scale-105 duration-300 
+                        `shadow-xl row-start-3 row-end-4 col-start-3 col-end-4 rounded-xl grid place-items-center hover:shadow-2xl hover:scale-105 duration-300 
             ${isActive ? "bg-black text-white" : "bg-white"} ${bloqueado(
                             "rendimientoHistorico"
                         )}`
@@ -112,7 +112,7 @@ const Hitos = () => {
                 <NavLink
                     to="/hitos/VarSimulacion"
                     className={({ isActive }) =>
-                        `shadow-2xl row-start-5 row-end-6 col-start-3 col-end-4 rounded-xl grid place-items-center hover:scale-105 duration-300 
+                        `shadow-xl row-start-5 row-end-6 col-start-3 col-end-4 rounded-xl grid place-items-center hover:shadow-2xl hover:scale-105 duration-300 
             ${isActive ? "bg-black text-white" : "bg-white"} ${bloqueado(
                             "varSimulacion"
                         )}`
@@ -124,7 +124,7 @@ const Hitos = () => {
                 <NavLink
                     to="/hitos/VarPortafolios"
                     className={({ isActive }) =>
-                        `shadow-2xl row-start-2 row-end-3 col-start-4 col-end-5 rounded-xl grid place-items-center hover:scale-105 duration-300 
+                        `shadow-xl row-start-2 row-end-3 col-start-4 col-end-5 rounded-xl grid place-items-center hover:shadow-2xl hover:scale-105 duration-300 
             ${isActive ? "bg-black text-white" : "bg-white"} ${bloqueado(
                             "varPortafolios"
                         )}`
@@ -136,7 +136,7 @@ const Hitos = () => {
                 <NavLink
                     to="/hitos/VarInterpretacion"
                     className={({ isActive }) =>
-                        `shadow-2xl row-start-4 row-end-5 col-start-4 col-end-5 rounded-xl grid place-items-center hover:scale-105 duration-300 
+                        `shadow-xl row-start-4 row-end-5 col-start-4 col-end-5 rounded-xl grid place-items-center hover:shadow-2xl hover:scale-105 duration-300 
             ${isActive ? "bg-black text-white" : "bg-white"} ${bloqueado(
                             "varInterpretacion"
                         )}`

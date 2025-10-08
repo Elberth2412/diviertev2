@@ -3,12 +3,17 @@ import imgEstadistica from "../../assets/estadistica.png";
 import Carrusel from "../../componentes/carrusel";
 import EvaluacionHito from "../../componentes/evaluacionHito";
 
+//hook de desplazamiento:
+import useSmoothScroll from "../../hooks/useSmoothScroll";
+
 //imagenes:
 import car6 from "../../assets/car-6.jpg";
 import car7 from "../../assets/car-7.jpg";
 import car8 from "../../assets/car-8.jpg";
 
 const HitoValorRiesgo = () => {
+
+    useSmoothScroll("contenido", 1100);
 
     let slides = [
         car6,
@@ -19,7 +24,7 @@ const HitoValorRiesgo = () => {
     return (
         <div>
             <Hitos />
-            <div className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
+            <div id = "contenido" className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
 
                 <section className="bg-black rounded-xl">
                     <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 items-center">
@@ -105,7 +110,7 @@ const HitoValorRiesgo = () => {
                     {/* Preguntas ocupando toda la segunda columna */}
                     <div className="bg-[#FFFFFF] col-start-2 col-end-3 row-span-2 flex items-center justify-center rounded-xl p-4">
                         <EvaluacionHito
-                            hito="valorRiesgo" // 👈 este será el siguiente hito a desbloquear
+                            hito="valorRiesgo"
                             preguntas={[
                                 {
                                     id: "p1",

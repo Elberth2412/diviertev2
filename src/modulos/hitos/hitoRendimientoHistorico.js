@@ -1,12 +1,18 @@
 import Hitos from "./hitos";
 import ComparadorActivos from "../../componentes/comparadorActivos";
+import EvaluacionHito from "../../componentes/evaluacionHito";
+
+//hook de desplazamiento:
+import useSmoothScroll from "../../hooks/useSmoothScroll";
 
 const HitoRendimientoHistorico = () => {
+
+    useSmoothScroll("contenido", 1100);
 
     return (
         <div>
             <Hitos />
-            <div className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
+            <div id="contenido" className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
 
                 <section className="bg-black rounded-xl">
                     <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 items-center">
@@ -108,99 +114,52 @@ const HitoRendimientoHistorico = () => {
 
                     {/* Preguntas ocupando toda la segunda columna */}
                     <div className="bg-[#FFFFFF] col-start-2 col-end-3 row-span-2 flex items-center justify-center rounded-xl">
-                        <div className="bg-white rounded-xl shadow-2xl p-8 max-w-lg w-full">
-                            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-                                Preguntas de Autoevaluación
-                            </h2>
+                        <EvaluacionHito
+                            hito="rendimientoHistorico"
+                            preguntas={[
+                                {
+                                    id: "p1",
+                                    texto: "¿Qué significa que un activo tenga un rendimiento promedio mayor que otro?",
+                                    opciones: [
+                                        "Que siempre es la mejor opción para invertir.",
+                                        "Que, en promedio, generó más ganancias que el otro.",
+                                        "Que no presenta riesgos financieros."
+                                    ],
+                                    correcta: "Que, en promedio, generó más ganancias que el otro."
+                                },
+                                {
+                                    id: "p2",
+                                    texto: "¿Por qué no siempre el activo con mayor rendimiento histórico es la mejor opción?",
+                                    opciones: [
+                                        "Porque puede estar asociado a una mayor volatilidad o riesgo.",
+                                        "Porque siempre tendrá pérdidas a largo plazo.",
+                                        "Porque no genera ningún beneficio real."
+                                    ],
+                                    correcta: "Porque puede estar asociado a una mayor volatilidad o riesgo."
+                                },
+                                {
+                                    id: "p3",
+                                    texto: "¿Qué relación hay entre estabilidad (desviación estándar baja) y el rendimiento histórico?",
+                                    opciones: [
+                                        "Una desviación baja implica menos riesgo, pero no garantiza un mayor rendimiento.",
+                                        "Menor desviación siempre asegura más ganancias.",
+                                        "Mayor desviación asegura menos riesgo."
+                                    ],
+                                    correcta: "Una desviación baja implica menos riesgo, pero no garantiza un mayor rendimiento."
+                                },
+                                {
+                                    id: "p4",
+                                    texto: "¿Qué significa que dos activos tengan rendimientos similares, pero distinta desviación estándar?",
+                                    opciones: [
+                                        "Que el activo con menor desviación es menos riesgoso y más predecible.",
+                                        "Que ambos tienen exactamente el mismo riesgo.",
+                                        "Que el activo con más desviación es siempre mejor opción."
+                                    ],
+                                    correcta: "Que el activo con menor desviación es menos riesgoso y más predecible."
+                                }
+                            ]}
+                        />
 
-                            {/* Pregunta 1 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    1. ¿Qué significa que un activo tenga un rendimiento promedio mayor que otro?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        Que siempre es la mejor opción para invertir.
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        Que, en promedio, generó más ganancias que el otro. ✅
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        Que no presenta riesgos financieros.
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 2 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    2. ¿Por qué no siempre el activo con mayor rendimiento histórico es la mejor opción?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        Porque puede estar asociado a una mayor volatilidad o riesgo. ✅
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        Porque siempre tendrá pérdidas a largo plazo.
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        Porque no genera ningún beneficio real.
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 3 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    3. ¿Qué relación hay entre estabilidad (desviación estándar baja) y el rendimiento histórico?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        Una desviación baja implica menos riesgo, pero no garantiza un mayor rendimiento. ✅
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        Menor desviación siempre asegura más ganancias.
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        Mayor desviación asegura menos riesgo.
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 4 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    4. ¿Qué significa que dos activos tengan rendimientos similares, pero distinta desviación estándar?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Que el activo con menor desviación es menos riesgoso y más predecible. ✅
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Que ambos tienen exactamente el mismo riesgo.
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Que el activo con más desviación es siempre mejor opción.
-                                    </label>
-                                </div>
-                            </div>
-
-                            <button className="w-full mt-4 bg-black hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg">
-                                Enviar respuestas
-                            </button>
-                        </div>
                     </div>
                 </div>
 

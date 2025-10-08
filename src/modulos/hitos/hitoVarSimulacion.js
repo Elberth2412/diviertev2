@@ -1,16 +1,21 @@
 import Hitos from "./hitos";
 import SimuladorVaR from "../../componentes/simuladorVAR";
+import EvaluacionHito from "../../componentes/evaluacionHito";
+
+//hook de desplazamiento:
+import useSmoothScroll from "../../hooks/useSmoothScroll";
 
 //Imagenes del carrusel:
 import car1 from "../../assets/car-1.png";
 
 const HitoVarSimulacion = () => {
 
+    useSmoothScroll("conuenido", 1100);
 
     return (
         <div>
             <Hitos />
-            <div className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
+            <div id="contenido" className="min-h-screen bg-gray-500 p-4 gap-10 m-4 rounded-xl">
 
                 <section className="bg-black rounded-xl">
                     <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 items-center">
@@ -141,99 +146,52 @@ const HitoVarSimulacion = () => {
 
                     {/* Preguntas ocupando toda la segunda columna */}
                     <div className="bg-[#FFFFFF] col-start-2 col-end-3 row-span-2 flex items-center justify-center rounded-xl">
-                        <div className="bg-white rounded-xl shadow-2xl p-8 max-w-lg w-full">
-                            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-                                Preguntas de Autoevaluación
-                            </h2>
+                        <EvaluacionHito
+                            hito="varSimulacion"
+                            preguntas={[
+                                {
+                                    id: "p1",
+                                    texto: "¿Qué mide el Valor en Riesgo (VaR)?",
+                                    opciones: [
+                                        "La ganancia máxima que un activo puede tener.",
+                                        "La pérdida máxima esperada en un horizonte y nivel de confianza dado.",
+                                        "La rentabilidad promedio de un activo."
+                                    ],
+                                    correcta: "La pérdida máxima esperada en un horizonte y nivel de confianza dado."
+                                },
+                                {
+                                    id: "p2",
+                                    texto: "¿Por qué es importante usar un horizonte temporal en el VaR?",
+                                    opciones: [
+                                        "Para ajustar la estimación de riesgo según el periodo de inversión.",
+                                        "Porque el horizonte no afecta el cálculo.",
+                                        "Porque siempre se calcula a 1 día sin importar el caso."
+                                    ],
+                                    correcta: "Para ajustar la estimación de riesgo según el periodo de inversión."
+                                },
+                                {
+                                    id: "p3",
+                                    texto: "¿Qué ocurre si el dataset de precios históricos es muy pequeño?",
+                                    opciones: [
+                                        "El VaR será más preciso.",
+                                        "El VaR puede no reflejar riesgos reales y dar valores engañosos.",
+                                        "No importa la cantidad de datos, siempre se obtiene el mismo VaR."
+                                    ],
+                                    correcta: "El VaR puede no reflejar riesgos reales y dar valores engañosos."
+                                },
+                                {
+                                    id: "p4",
+                                    texto: "¿Cómo se interpreta un VaR del 95% de 2% en un horizonte de 10 días?",
+                                    opciones: [
+                                        "Con 95% de confianza, la pérdida máxima en 10 días no superará el 2%.",
+                                        "Con 95% de confianza, la ganancia mínima será del 2%.",
+                                        "Se garantiza que la inversión siempre tendrá un retorno del 2%."
+                                    ],
+                                    correcta: "Con 95% de confianza, la pérdida máxima en 10 días no superará el 2%."
+                                }
+                            ]}
+                        />
 
-                            {/* Pregunta 1 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    1. ¿Qué mide el Valor en Riesgo (VaR)?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        La ganancia máxima que un activo puede tener.
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        La pérdida máxima esperada en un horizonte y nivel de confianza dado. ✅
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="presupuesto" className="mr-2" />
-                                        La rentabilidad promedio de un activo.
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 2 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    2. ¿Por qué es importante usar un horizonte temporal en el VaR?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        Para ajustar la estimación de riesgo según el periodo de inversión. ✅
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        Porque el horizonte no afecta el cálculo.
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="ahorro" className="mr-2" />
-                                        Porque siempre se calcula a 1 día sin importar el caso.
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 3 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    3. ¿Qué ocurre si el dataset de precios históricos es muy pequeño?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        El VaR será más preciso.
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        El VaR puede no reflejar riesgos reales y dar valores engañosos. ✅
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="mr-2" />
-                                        No importa la cantidad de datos, siempre se obtiene el mismo VaR.
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Pregunta 4 */}
-                            <div className="mb-6">
-                                <p className="font-medium text-gray-700 mb-2">
-                                    4. ¿Cómo se interpreta un VaR del 95% de 2% en un horizonte de 10 días?
-                                </p>
-                                <div className="space-y-2">
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Con 95% de confianza, la pérdida máxima en 10 días no superará el 2%. ✅
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Con 95% de confianza, la ganancia mínima será del 2%.
-                                    </label>
-                                    <label className="flex items-center">
-                                        <input type="radio" name="riesgos" className="mr-2" />
-                                        Se garantiza que la inversión siempre tendrá un retorno del 2%.
-                                    </label>
-                                </div>
-                            </div>
-
-                            <button className="w-full mt-4 bg-black hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg">
-                                Enviar respuestas
-                            </button>
-                        </div>
                     </div>
                 </div>
 
