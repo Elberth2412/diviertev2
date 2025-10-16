@@ -2,6 +2,8 @@ import Hitos from "./hitos";
 import ComparadorActivos from "../../componentes/comparadorActivos";
 import EvaluacionHito from "../../componentes/evaluacionHito";
 
+import rendimiento from "../../assets/rendimientoHistorico.jpg"
+
 //hook de desplazamiento:
 import useSmoothScroll from "../../hooks/useSmoothScroll";
 
@@ -38,7 +40,7 @@ const HitoRendimientoHistorico = () => {
 
                         {/* Imagen a la derecha */}
                         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex bg-[#FFFFFF] rounded-xl h-[350px]">
-                            <img className="w-full p-4" src="" alt="mockup" />
+                            <img className="w-full p-4" src={rendimiento} alt="mockup" />
                         </div>
 
                     </div>

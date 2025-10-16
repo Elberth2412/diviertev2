@@ -1,8 +1,9 @@
 import Hitos from "./hitos";
-import imgEstadistica from "../../assets/estadistica.png";
 import Carrusel from "../../componentes/carrusel";
 import EvaluacionHito from "../../componentes/evaluacionHito";
 import useSmoothScroll from "../../hooks/useSmoothScroll";
+
+import conceptos from "../../assets/conceptosBasicos.png"
 
 //Imagenes del carrusel:
 import car1 from "../../assets/car-1.png";
@@ -47,7 +48,7 @@ const HitoConceptosBasicos = () => {
 
                         {/* Imagen a la derecha */}
                         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex bg-[#FFFFFF] rounded-xl h-[350px]">
-                            <img className="w-full p-4" src={imgEstadistica} alt="mockup" />
+                            <img className="w-full p-4" src={conceptos} alt="mockup" />
                         </div>
 
                     </div>

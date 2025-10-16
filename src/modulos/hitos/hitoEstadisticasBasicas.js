@@ -9,6 +9,7 @@ import useSmoothScroll from "../../hooks/useSmoothScroll";
 //Imagenes del carrusel:
 import car14 from "../../assets/car-14.jpg";
 import car15 from "../../assets/car-15.jpg";
+import estadis from "../../assets/estadisticaBasica.jpg";
 
 const HitoEstadisticasBasicas = () => {
 
@@ -49,7 +50,7 @@ const HitoEstadisticasBasicas = () => {
 
                         {/* Imagen a la derecha */}
                         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex bg-[#FFFFFF] rounded-xl h-[350px]">
-                            <img className="w-full p-4" src={car14} alt="mockup" />
+                            <img className="w-full p-4" src={estadis} alt="mockup" />
                         </div>
 
                     </div>

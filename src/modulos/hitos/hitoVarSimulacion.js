@@ -6,7 +6,7 @@ import EvaluacionHito from "../../componentes/evaluacionHito";
 import useSmoothScroll from "../../hooks/useSmoothScroll";
 
 //Imagenes del carrusel:
-import car1 from "../../assets/car-1.png";
+import simu from "../../assets/simulacionVaR.jpeg";
 
 const HitoVarSimulacion = () => {
 
@@ -46,7 +46,7 @@ const HitoVarSimulacion = () => {
 
                         {/* Imagen a la derecha */}
                         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex bg-[#FFFFFF] rounded-xl h-[350px]">
-                            <img className="w-full p-4" src={car1} alt="mockup" />
+                            <img className="w-full p-4" src={simu} alt="mockup" />
                         </div>
 
                     </div>

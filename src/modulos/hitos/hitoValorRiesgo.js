@@ -1,5 +1,5 @@
 import Hitos from "./hitos";
-import imgEstadistica from "../../assets/estadistica.png";
+import riesgo from "../../assets/riesgoFinanciero.jpg"
 import Carrusel from "../../componentes/carrusel";
 import EvaluacionHito from "../../componentes/evaluacionHito";
 
@@ -58,7 +58,7 @@ const HitoValorRiesgo = () => {
 
                         {/* Imagen a la derecha */}
                         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex bg-[#FFFFFF] rounded-xl h-[350px]">
-                            <img className="w-full p-4" src={imgEstadistica} alt="mockup" />
+                            <img className="w-full p-4" src={riesgo} alt="mockup" />
                         </div>
 
                     </div>
