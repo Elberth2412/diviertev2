@@ -63,33 +63,35 @@ const Estadisticas = () => {
             <div className="grid grid-cols-3 gap-4 bg-black p-4 rounded-xl">
 
                 {/* Gráfico de dona */}
-                <div className="bg-white p-4 rounded-xl shadow-lg text-black flex flex-col items-center justify-center">
-                    <h2 className="text-xl font-semibold mb-4">Progreso general</h2>
-                    <ResponsiveContainer width="100%" height={250}>
-                        <PieChart>
-                            <Pie
-                                data={data}
-                                dataKey="value"
-                                nameKey="name"
-                                cx="50%"
-                                cy="50%"
-                                innerRadius={60}
-                                outerRadius={90}
-                                label={({ name, value }) => `${name}: ${value}%`}
-                            >
-                                {data.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={colores[index % colores.length]} />
-                                ))}
-                            </Pie>
-                            <Tooltip />
-                            <Legend />
-                        </PieChart>
-                    </ResponsiveContainer>
+                <div className="max-h-[480px]">
+                    <div className="bg-white p-4 rounded-xl shadow-lg text-black flex flex-col items-center justify-center h-full">
+                        <h2 className="text-xl font-semibold">Progreso general</h2>
+                        <ResponsiveContainer width="100%" height={250}>
+                            <PieChart>
+                                <Pie
+                                    data={data}
+                                    dataKey="value"
+                                    nameKey="name"
+                                    cx="50%"
+                                    cy="50%"
+                                    innerRadius={60}
+                                    outerRadius={90}
+                                    label={({ name, value }) => `${name}: ${value}%`}
+                                >
+                                    {data.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={colores[index % colores.length]} />
+                                    ))}
+                                </Pie>
+                                <Tooltip />
+                                <Legend />
+                            </PieChart>
+                        </ResponsiveContainer>
+                    </div>
                 </div>
 
                 {/* Lista de hitos */}
                 <div className="bg-white p-4 rounded-xl shadow-lg text-black">
-                    <h2 className="text-xl font-semibold mb-4">📘 Hitos completados</h2>
+                    <h2 className="text-xl font-semibold mb-4">Hitos completados</h2>
                     <ul className="space-y-2">
                         {[
                             { nombre: "Conceptos Básicos", key: "conceptosBasicos" },
@@ -103,7 +105,7 @@ const Estadisticas = () => {
                         ].map((hito, i) => (
                             <li
                                 key={i}
-                                className={`p-3 rounded-lg flex justify-between items-center ${progreso[hito.key] ? "bg-gray-500 text-[#FFFFFF]": "bg-gray-200"
+                                className={`p-3 rounded-lg flex justify-between items-center ${progreso[hito.key] ? "bg-gray-500 text-[#FFFFFF]" : "bg-gray-200"
                                     }`}
                             >
                                 <span className="font-medium">{hito.nombre}</span>
@@ -117,11 +119,10 @@ const Estadisticas = () => {
 
                 <div>
                     {/* Historial de simulaciones */}
-                    <div className="bg-white text-black p-4 rounded-xl shadow-md">
-                        <h2 className="text-xl font-semibold mb-4">🧾 Historial de simulaciones</h2>
+                    <div className="bg-white text-black p-4 rounded-xl shadow-md max-h-[480px] overflow-y-auto">
+                        <h2 className="text-xl font-semibold mb-4">Historial de simulaciones</h2>
                         <ul className="space-y-3">
                             {simulaciones.length > 0 && (
-
                                 simulaciones.map((sim, i) => (
                                     <li
                                         key={i}

@@ -39,7 +39,6 @@ const Navbar = () => {
         try {
             const res = await signInWithPopup(auth, googleProvider);
             await guardarUsuarioEnFirestore(res.user);
-            console.log("usuario", res.user)
         } catch (error) {
             console.error("Error al iniciar sesión", error.message);
         }
@@ -63,13 +62,13 @@ const Navbar = () => {
                                 <p className="text-sm  text-gray-500 dark:text-white">
                                     {(usuario.displayName).toUpperCase()}
                                 </p>
-                                <button className="text-sm  text-black-800 dark:text-black-500 hover:underline" onClick={logout}>
+                                <button className="text-[#000000] bg-[#FFFFFF] p-2 rounded-xl hover:scale-105 duration-300 hover:bg-[#000000] hover:text-[#FFFFFF]" onClick={logout}>
                                     CERRAR SESION
                                 </button>
                             </div>
                         ) : (
                             <div className="flex items-center space-x-6 rtl:space-x-reverse">
-                                <button className="text-sm  text-black-800 dark:text-black-500 hover:underline" onClick={login}>
+                                <button className="text-[#000000] bg-[#FFFFFF] p-2 rounded-xl hover:scale-105 duration-300 hover:bg-[#000000] hover:text-[#FFFFFF]" onClick={login}>
                                     INICIAR SESION
                                 </button>
                             </div>

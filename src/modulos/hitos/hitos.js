@@ -35,7 +35,7 @@ const Hitos = () => {
 
         return progresoActivo[anterior]
             ? ""
-            : !bloq;
+            : bloq;
     };
 
     const dependencias = {

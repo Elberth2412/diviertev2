@@ -96,7 +96,7 @@ const Simulador = () => {
                             className="border p-1 text-center rounded text-[#000000] mb-1 w-full "
                             placeholder="Ejm: NVDA"
                         />
-                        <button onClick={handleBuscar} className="p-1 bg-[#FFFFFF] text-black rounded w-full hover:bg-black hover:text-white duration-500 hover:scale-105">
+                        <button onClick={handleBuscar} className="p-1 bg-[#FFFFFF] text-black rounded-xl w-full hover:bg-black hover:text-white duration-500 hover:scale-105">
                             Generar Grafico
                         </button>
                     </div>
@@ -179,7 +179,7 @@ const Simulador = () => {
                             {/* Botón calcular */}
                             <button
                                 onClick={handleCalcularVaR}
-                                className="col-span-2 p-1 bg-[#FFFFFF] text-[#000000] rounded-xl w-full hover:bg-black hover:text-white"
+                                className="col-span-2 p-1 bg-[#FFFFFF] text-[#000000] rounded-xl w-1/2 mr-auto ml-auto hover:bg-black hover:text-white duration-500 hover:scale-105"
                             >
                                 Calcular VaR
                             </button>
